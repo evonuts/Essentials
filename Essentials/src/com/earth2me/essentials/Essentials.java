@@ -18,19 +18,6 @@
 package com.earth2me.essentials;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.api.Economy;
-import com.earth2me.essentials.api.IJails;
-import com.earth2me.essentials.commands.IEssentialsCommand;
-import com.earth2me.essentials.commands.NoChargeException;
-import com.earth2me.essentials.commands.NotEnoughArgumentsException;
-import com.earth2me.essentials.metrics.Metrics;
-import com.earth2me.essentials.metrics.MetricsListener;
-import com.earth2me.essentials.metrics.MetricsStarter;
-import com.earth2me.essentials.perm.PermissionsHandler;
-import com.earth2me.essentials.register.payment.Methods;
-import com.earth2me.essentials.signs.SignBlockListener;
-import com.earth2me.essentials.signs.SignEntityListener;
-import com.earth2me.essentials.signs.SignPlayerListener;
 import java.io.File;
 import java.io.FileReader;
 import java.io.IOException;
@@ -60,6 +47,19 @@ import org.bukkit.plugin.PluginDescriptionFile;
 import org.bukkit.plugin.PluginManager;
 import org.bukkit.plugin.java.JavaPlugin;
 import org.bukkit.scheduler.BukkitScheduler;
+import com.earth2me.essentials.api.Economy;
+import com.earth2me.essentials.api.IJails;
+import com.earth2me.essentials.commands.IEssentialsCommand;
+import com.earth2me.essentials.commands.NoChargeException;
+import com.earth2me.essentials.commands.NotEnoughArgumentsException;
+import com.earth2me.essentials.metrics.Metrics;
+import com.earth2me.essentials.metrics.MetricsListener;
+import com.earth2me.essentials.metrics.MetricsStarter;
+import com.earth2me.essentials.perm.PermissionsHandler;
+import com.earth2me.essentials.register.payment.Methods;
+import com.earth2me.essentials.signs.SignBlockListener;
+import com.earth2me.essentials.signs.SignEntityListener;
+import com.earth2me.essentials.signs.SignPlayerListener;
 import org.yaml.snakeyaml.error.YAMLException;
 
 

@@ -1,7 +1,6 @@
 package com.earth2me.essentials;
 
 import static com.earth2me.essentials.I18n._;
-import com.google.common.io.Files;
 import java.io.*;
 import java.nio.ByteBuffer;
 import java.nio.CharBuffer;
@@ -19,6 +18,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
 import org.bukkit.util.Vector;
+import com.google.common.io.Files;
 
 
 public class EssentialsConf extends YamlConfiguration

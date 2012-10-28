@@ -1,8 +1,5 @@
 package com.earth2me.essentials.textreader;
 
-import com.earth2me.essentials.DescParseTickFormat;
-import com.earth2me.essentials.IEssentials;
-import com.earth2me.essentials.User;
 import java.text.DateFormat;
 import java.util.ArrayList;
 import java.util.Date;
@@ -12,6 +9,9 @@ import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import com.earth2me.essentials.DescParseTickFormat;
+import com.earth2me.essentials.IEssentials;
+import com.earth2me.essentials.User;
 
 
 public class KeywordReplacer implements IText

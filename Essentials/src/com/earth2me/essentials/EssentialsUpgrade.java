@@ -1,9 +1,6 @@
 package com.earth2me.essentials;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.craftbukkit.FakeWorld;
-import com.earth2me.essentials.settings.Spawns;
-import com.earth2me.essentials.storage.YamlStorageWriter;
 import java.io.*;
 import java.math.BigInteger;
 import java.security.DigestInputStream;
@@ -16,6 +13,9 @@ import org.bukkit.Location;
 import org.bukkit.Material;
 import org.bukkit.World;
 import org.bukkit.inventory.ItemStack;
+import com.earth2me.essentials.craftbukkit.FakeWorld;
+import com.earth2me.essentials.settings.Spawns;
+import com.earth2me.essentials.storage.YamlStorageWriter;
 
 
 public class EssentialsUpgrade

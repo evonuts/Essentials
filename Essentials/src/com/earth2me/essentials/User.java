@@ -1,8 +1,6 @@
 package com.earth2me.essentials;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.commands.IEssentialsCommand;
-import com.earth2me.essentials.register.payment.Method;
 import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.logging.Level;
@@ -12,6 +10,8 @@ import org.bukkit.Location;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
+import com.earth2me.essentials.commands.IEssentialsCommand;
+import com.earth2me.essentials.register.payment.Method;
 
 
 public class User extends UserData implements Comparable<User>, IReplyTo, IUser

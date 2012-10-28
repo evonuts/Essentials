@@ -1,11 +1,11 @@
 package com.earth2me.essentials.perm;
 
-import com.nijiko.permissions.PermissionHandler;
-import com.nijikokun.bukkit.Permissions.Permissions;
 import java.util.Arrays;
 import java.util.List;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
+import com.nijiko.permissions.PermissionHandler;
+import com.nijikokun.bukkit.Permissions.Permissions;
 
 
 public class Permissions2Handler implements IPermissionsHandler

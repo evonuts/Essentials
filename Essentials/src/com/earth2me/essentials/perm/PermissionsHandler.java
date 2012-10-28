@@ -1,6 +1,5 @@
 package com.earth2me.essentials.perm;
 
-import com.earth2me.essentials.Util;
 import java.util.Collections;
 import java.util.List;
 import java.util.logging.Level;
@@ -8,6 +7,7 @@ import java.util.logging.Logger;
 import org.bukkit.entity.Player;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.plugin.PluginManager;
+import com.earth2me.essentials.Util;
 
 
 public class PermissionsHandler implements IPermissionsHandler

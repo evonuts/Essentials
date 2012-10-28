@@ -1,6 +1,5 @@
 package com.earth2me.essentials.signs;
 
-import com.earth2me.essentials.IEssentials;
 import java.util.logging.Level;
 import org.bukkit.Material;
 import org.bukkit.block.Block;
@@ -10,6 +9,7 @@ import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.block.Action;
 import org.bukkit.event.player.PlayerInteractEvent;
+import com.earth2me.essentials.IEssentials;
 
 
 public class SignPlayerListener implements Listener

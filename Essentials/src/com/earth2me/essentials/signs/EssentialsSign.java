@@ -1,7 +1,6 @@
 package com.earth2me.essentials.signs;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.*;
 import java.util.HashSet;
 import java.util.Locale;
 import java.util.Set;
@@ -12,6 +11,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.entity.Player;
 import org.bukkit.event.block.SignChangeEvent;
 import org.bukkit.inventory.ItemStack;
+import com.earth2me.essentials.*;
 
 
 public class EssentialsSign

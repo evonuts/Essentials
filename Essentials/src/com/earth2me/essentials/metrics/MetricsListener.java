@@ -1,13 +1,13 @@
 package com.earth2me.essentials.metrics;
 
-import com.earth2me.essentials.IEssentials;
-import com.earth2me.essentials.User;
 import java.util.logging.Level;
 import org.bukkit.Server;
 import org.bukkit.event.EventHandler;
 import org.bukkit.event.EventPriority;
 import org.bukkit.event.Listener;
 import org.bukkit.event.player.PlayerJoinEvent;
+import com.earth2me.essentials.IEssentials;
+import com.earth2me.essentials.User;
 
 
 public class MetricsListener implements Listener

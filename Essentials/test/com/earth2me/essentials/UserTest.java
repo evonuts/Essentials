@@ -1,10 +1,10 @@
 package com.earth2me.essentials;
 
 import java.io.IOException;
-import junit.framework.TestCase;
 import org.bukkit.Location;
 import org.bukkit.World.Environment;
 import org.bukkit.plugin.InvalidDescriptionException;
+import junit.framework.TestCase;
 
 
 public class UserTest extends TestCase

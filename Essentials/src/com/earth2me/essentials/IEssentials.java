@@ -1,15 +1,15 @@
 package com.earth2me.essentials;
 
-import com.earth2me.essentials.api.IJails;
-import com.earth2me.essentials.metrics.Metrics;
-import com.earth2me.essentials.perm.PermissionsHandler;
-import com.earth2me.essentials.register.payment.Methods;
 import java.util.List;
 import org.bukkit.World;
 import org.bukkit.command.Command;
 import org.bukkit.command.CommandSender;
 import org.bukkit.plugin.Plugin;
 import org.bukkit.scheduler.BukkitScheduler;
+import com.earth2me.essentials.api.IJails;
+import com.earth2me.essentials.metrics.Metrics;
+import com.earth2me.essentials.perm.PermissionsHandler;
+import com.earth2me.essentials.register.payment.Methods;
 
 
 public interface IEssentials extends Plugin

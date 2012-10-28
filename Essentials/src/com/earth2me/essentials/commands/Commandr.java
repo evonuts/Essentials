@@ -1,13 +1,13 @@
 package com.earth2me.essentials.commands;
 
-import com.earth2me.essentials.Console;
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.IReplyTo;
-import com.earth2me.essentials.User;
-import com.earth2me.essentials.Util;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.Player;
+import com.earth2me.essentials.Console;
+import com.earth2me.essentials.IReplyTo;
+import com.earth2me.essentials.User;
+import com.earth2me.essentials.Util;
 
 
 public class Commandr extends EssentialsCommand

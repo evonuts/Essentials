@@ -1,16 +1,16 @@
 package com.earth2me.essentials.commands;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.User;
-import com.earth2me.essentials.Util;
-import com.earth2me.essentials.textreader.ArrayListInput;
-import com.earth2me.essentials.textreader.TextPager;
 import java.text.DateFormat;
 import java.util.*;
 import java.util.Map.Entry;
 import java.util.concurrent.locks.ReentrantReadWriteLock;
 import org.bukkit.Server;
 import org.bukkit.command.CommandSender;
+import com.earth2me.essentials.User;
+import com.earth2me.essentials.Util;
+import com.earth2me.essentials.textreader.ArrayListInput;
+import com.earth2me.essentials.textreader.TextPager;
 
 
 public class Commandbalancetop extends EssentialsCommand

@@ -1,10 +1,10 @@
 package com.earth2me.essentials;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.api.IItemDb;
 import java.util.*;
 import org.bukkit.Material;
 import org.bukkit.inventory.ItemStack;
+import com.earth2me.essentials.api.IItemDb;
 
 
 public class ItemDb implements IConf, IItemDb

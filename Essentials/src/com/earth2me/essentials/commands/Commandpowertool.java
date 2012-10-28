@@ -1,14 +1,14 @@
 package com.earth2me.essentials.commands;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.User;
-import com.earth2me.essentials.Util;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Locale;
 import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.inventory.ItemStack;
+import com.earth2me.essentials.User;
+import com.earth2me.essentials.Util;
 
 
 public class Commandpowertool extends EssentialsCommand

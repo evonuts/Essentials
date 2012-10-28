@@ -1,8 +1,6 @@
 package com.earth2me.essentials.commands;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.User;
-import com.earth2me.essentials.metrics.Metrics;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
@@ -13,6 +11,8 @@ import org.bukkit.block.Block;
 import org.bukkit.command.CommandSender;
 import org.bukkit.command.ConsoleCommandSender;
 import org.bukkit.entity.Player;
+import com.earth2me.essentials.User;
+import com.earth2me.essentials.metrics.Metrics;
 
 // This command has 4 undocumented behaviours #EasterEgg
 public class Commandessentials extends EssentialsCommand

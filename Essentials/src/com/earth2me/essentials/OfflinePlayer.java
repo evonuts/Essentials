@@ -3,7 +3,6 @@ package com.earth2me.essentials;
 import static com.earth2me.essentials.I18n._;
 import java.net.InetSocketAddress;
 import java.util.*;
-import lombok.Delegate;
 import org.bukkit.*;
 import org.bukkit.block.Block;
 import org.bukkit.conversations.Conversation;
@@ -25,6 +24,7 @@ import org.bukkit.plugin.Plugin;
 import org.bukkit.potion.PotionEffect;
 import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
+import lombok.Delegate;
 
 public class OfflinePlayer implements Player
 {

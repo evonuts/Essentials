@@ -1,13 +1,13 @@
 package com.earth2me.essentials.api;
 
-import com.earth2me.essentials.EssentialsConf;
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.IEssentials;
-import com.earth2me.essentials.User;
-import com.earth2me.essentials.Util;
 import java.io.File;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import com.earth2me.essentials.EssentialsConf;
+import com.earth2me.essentials.IEssentials;
+import com.earth2me.essentials.User;
+import com.earth2me.essentials.Util;
 
 
 /**

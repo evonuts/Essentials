@@ -1,13 +1,13 @@
 package com.earth2me.essentials.metrics;
 
+import java.util.Locale;
+import java.util.logging.Level;
+import org.bukkit.configuration.ConfigurationSection;
 import com.earth2me.essentials.IEssentials;
 import com.earth2me.essentials.metrics.Metrics.Graph;
 import com.earth2me.essentials.metrics.Metrics.Plotter;
 import com.earth2me.essentials.register.payment.Method;
 import com.earth2me.essentials.register.payment.methods.VaultEco;
-import java.util.Locale;
-import java.util.logging.Level;
-import org.bukkit.configuration.ConfigurationSection;
 
 
 public class MetricsStarter implements Runnable

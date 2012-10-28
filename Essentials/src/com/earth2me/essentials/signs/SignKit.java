@@ -1,10 +1,10 @@
 package com.earth2me.essentials.signs;
 
-import com.earth2me.essentials.*;
-import com.earth2me.essentials.commands.NoChargeException;
 import java.util.List;
 import java.util.Locale;
 import java.util.Map;
+import com.earth2me.essentials.*;
+import com.earth2me.essentials.commands.NoChargeException;
 
 
 public class SignKit extends EssentialsSign

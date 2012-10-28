@@ -2,11 +2,11 @@ package com.earth2me.essentials.perm;
 
 import java.util.ArrayList;
 import java.util.List;
+import org.bukkit.entity.Player;
+import org.bukkit.plugin.Plugin;
 import net.krinsoft.privileges.Privileges;
 import net.krinsoft.privileges.groups.Group;
 import net.krinsoft.privileges.groups.GroupManager;
-import org.bukkit.entity.Player;
-import org.bukkit.plugin.Plugin;
 
 public class PrivilegesHandler extends SuperpermsHandler
 {

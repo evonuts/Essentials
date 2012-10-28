@@ -1,10 +1,10 @@
 package com.earth2me.essentials.commands;
 
-import com.earth2me.essentials.User;
 import org.bukkit.Server;
 import org.bukkit.entity.Fireball;
 import org.bukkit.entity.SmallFireball;
 import org.bukkit.util.Vector;
+import com.earth2me.essentials.User;
 
 
 public class Commandfireball extends EssentialsCommand

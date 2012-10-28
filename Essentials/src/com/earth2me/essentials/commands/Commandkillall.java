@@ -1,7 +1,6 @@
 package com.earth2me.essentials.commands;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.Mob;
 import java.util.Collections;
 import java.util.Locale;
 import org.bukkit.Chunk;
@@ -10,6 +9,7 @@ import org.bukkit.World;
 import org.bukkit.command.CommandSender;
 import org.bukkit.entity.*;
 import org.bukkit.event.entity.EntityDeathEvent;
+import com.earth2me.essentials.Mob;
 
 
 public class Commandkillall extends EssentialsCommand

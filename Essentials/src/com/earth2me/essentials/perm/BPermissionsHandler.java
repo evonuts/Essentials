@@ -1,11 +1,11 @@
 package com.earth2me.essentials.perm;
 
+import java.util.List;
+import org.bukkit.entity.Player;
 import de.bananaco.permissions.Permissions;
 import de.bananaco.permissions.info.InfoReader;
 import de.bananaco.permissions.interfaces.PermissionSet;
 import de.bananaco.permissions.worlds.WorldPermissionsManager;
-import java.util.List;
-import org.bukkit.entity.Player;
 
 
 public class BPermissionsHandler extends SuperpermsHandler

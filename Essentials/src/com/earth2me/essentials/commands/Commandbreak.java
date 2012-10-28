@@ -1,11 +1,11 @@
 package com.earth2me.essentials.commands;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.User;
 import org.bukkit.Material;
 import org.bukkit.Server;
 import org.bukkit.block.Block;
 import org.bukkit.event.block.BlockBreakEvent;
+import com.earth2me.essentials.User;
 
 
 public class Commandbreak extends EssentialsCommand

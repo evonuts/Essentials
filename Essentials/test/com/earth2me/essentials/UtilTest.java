@@ -5,9 +5,9 @@ import java.util.Calendar;
 import java.util.GregorianCalendar;
 import java.util.HashSet;
 import java.util.Set;
-import junit.framework.TestCase;
 import org.bukkit.World.Environment;
 import org.bukkit.plugin.InvalidDescriptionException;
+import junit.framework.TestCase;
 
 
 public class UtilTest extends TestCase

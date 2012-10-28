@@ -1,8 +1,8 @@
 package com.earth2me.essentials;
 
-import com.earth2me.essentials.commands.IEssentialsCommand;
 import org.bukkit.Location;
 import org.bukkit.entity.Player;
+import com.earth2me.essentials.commands.IEssentialsCommand;
 
 
 public interface IUser extends Player

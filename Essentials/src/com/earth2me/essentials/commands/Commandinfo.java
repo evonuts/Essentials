@@ -1,11 +1,11 @@
 package com.earth2me.essentials.commands;
 
+import org.bukkit.Server;
+import org.bukkit.command.CommandSender;
 import com.earth2me.essentials.textreader.IText;
 import com.earth2me.essentials.textreader.KeywordReplacer;
 import com.earth2me.essentials.textreader.TextInput;
 import com.earth2me.essentials.textreader.TextPager;
-import org.bukkit.Server;
-import org.bukkit.command.CommandSender;
 
 
 public class Commandinfo extends EssentialsCommand

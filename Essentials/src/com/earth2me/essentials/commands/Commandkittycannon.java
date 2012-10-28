@@ -1,11 +1,11 @@
 package com.earth2me.essentials.commands;
 
-import com.earth2me.essentials.Mob;
-import com.earth2me.essentials.User;
 import java.util.Random;
 import org.bukkit.Location;
 import org.bukkit.Server;
 import org.bukkit.entity.Ocelot;
+import com.earth2me.essentials.Mob;
+import com.earth2me.essentials.User;
 
 // This command is not documented on the wiki #EasterEgg
 public class Commandkittycannon extends EssentialsCommand

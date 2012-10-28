@@ -1,11 +1,6 @@
 package com.earth2me.essentials;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.commands.IEssentialsCommand;
-import com.earth2me.essentials.signs.EssentialsSign;
-import com.earth2me.essentials.signs.Signs;
-import com.earth2me.essentials.textreader.IText;
-import com.earth2me.essentials.textreader.SimpleTextInput;
 import java.io.File;
 import java.text.MessageFormat;
 import java.util.*;
@@ -16,6 +11,11 @@ import org.bukkit.configuration.ConfigurationSection;
 import org.bukkit.configuration.MemoryConfiguration;
 import org.bukkit.event.EventPriority;
 import org.bukkit.inventory.ItemStack;
+import com.earth2me.essentials.commands.IEssentialsCommand;
+import com.earth2me.essentials.signs.EssentialsSign;
+import com.earth2me.essentials.signs.Signs;
+import com.earth2me.essentials.textreader.IText;
+import com.earth2me.essentials.textreader.SimpleTextInput;
 
 
 public class Settings implements ISettings

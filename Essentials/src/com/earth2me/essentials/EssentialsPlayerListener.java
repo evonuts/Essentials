@@ -1,10 +1,6 @@
 package com.earth2me.essentials;
 
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.textreader.IText;
-import com.earth2me.essentials.textreader.KeywordReplacer;
-import com.earth2me.essentials.textreader.TextInput;
-import com.earth2me.essentials.textreader.TextPager;
 import java.io.IOException;
 import java.util.Arrays;
 import java.util.Iterator;
@@ -23,11 +19,15 @@ import org.bukkit.event.Listener;
 import org.bukkit.event.inventory.InventoryClickEvent;
 import org.bukkit.event.inventory.InventoryCloseEvent;
 import org.bukkit.event.inventory.InventoryType;
-import org.bukkit.event.player.PlayerLoginEvent.Result;
 import org.bukkit.event.player.*;
+import org.bukkit.event.player.PlayerLoginEvent.Result;
 import org.bukkit.event.player.PlayerTeleportEvent.TeleportCause;
 import org.bukkit.inventory.InventoryHolder;
 import org.bukkit.inventory.ItemStack;
+import com.earth2me.essentials.textreader.IText;
+import com.earth2me.essentials.textreader.KeywordReplacer;
+import com.earth2me.essentials.textreader.TextInput;
+import com.earth2me.essentials.textreader.TextPager;
 
 
 public class EssentialsPlayerListener implements Listener

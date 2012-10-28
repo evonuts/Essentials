@@ -61,7 +61,8 @@ public class Backup implements Runnable
 		{
 			return;
 		}
-		if ("save-all".equalsIgnoreCase(command)) {
+		if ("save-all".equalsIgnoreCase(command))
+		{
 			final CommandSender cs = server.getConsoleSender();
 			server.dispatchCommand(cs, "save-all");
 			active = false;

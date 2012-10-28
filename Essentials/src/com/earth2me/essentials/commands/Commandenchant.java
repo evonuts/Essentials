@@ -1,9 +1,6 @@
 package com.earth2me.essentials.commands;
 
-import com.earth2me.essentials.Enchantments;
 import static com.earth2me.essentials.I18n._;
-import com.earth2me.essentials.User;
-import com.earth2me.essentials.Util;
 import java.util.Locale;
 import java.util.Map;
 import java.util.Set;
@@ -11,6 +8,9 @@ import java.util.TreeSet;
 import org.bukkit.Server;
 import org.bukkit.enchantments.Enchantment;
 import org.bukkit.inventory.ItemStack;
+import com.earth2me.essentials.Enchantments;
+import com.earth2me.essentials.User;
+import com.earth2me.essentials.Util;
 
 
 public class Commandenchant extends EssentialsCommand
