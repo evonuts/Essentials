@@ -7,6 +7,7 @@ import org.bukkit.entity.Ocelot;
 import com.earth2me.essentials.Mob;
 import com.earth2me.essentials.User;
 
+
 // This command is not documented on the wiki #EasterEgg
 public class Commandkittycannon extends EssentialsCommand
 {
@@ -30,15 +31,16 @@ public class Commandkittycannon extends EssentialsCommand
 		ocelot.setCatType(Ocelot.Type.values()[i]);
 		ocelot.setTamed(true);
 		ocelot.setVelocity(user.getEyeLocation().getDirection().multiply(2));
-		ess.scheduleSyncDelayedTask(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				final Location loc = ocelot.getLocation();
-				ocelot.remove();
-				loc.getWorld().createExplosion(loc, 0F);
-			}
-		}, 20);
+		ess.scheduleSyncDelayedTask(
+				new Runnable()
+				{
+					@Override
+					public void run()
+					{
+						final Location loc = ocelot.getLocation();
+						ocelot.remove();
+						loc.getWorld().createExplosion(loc, 0F);
+					}
+				}, 20);
 	}
 }

@@ -16,6 +16,7 @@ public class Commandsudo extends EssentialsCommand
 	{
 		super("sudo");
 	}
+
 	private static final Logger LOGGER = Logger.getLogger("Minecraft");
 
 	@Override
@@ -27,7 +28,7 @@ public class Commandsudo extends EssentialsCommand
 		}
 
 		final User user = getPlayer(server, args, 0, false);
-		if(args[1].toLowerCase().startsWith("c:"))
+		if (args[1].toLowerCase().startsWith("c:"))
 		{
 			if (user.isAuthorized("essentials.sudo.exempt") && sender instanceof Player)
 			{
@@ -59,12 +60,16 @@ public class Commandsudo extends EssentialsCommand
 						@Override
 						public void run()
 						{
-							LOGGER.log(Level.INFO, String.format("[Sudo] %s issued server command: /%s %s", user.getName(), command, getFinalArg(arguments, 0)));
-							execCommand.execute(user.getBase(), command, arguments);							
+							LOGGER.log(
+									Level.INFO, String.format(
+									"[Sudo] %s issued server command: /%s %s", user.getName(), command,
+									getFinalArg(arguments, 0)));
+							execCommand.execute(user.getBase(), command, arguments);
 						}
 					});
 		}
-		else {
+		else
+		{
 			sender.sendMessage(_("errorCallingCommand", command));
 		}
 	}

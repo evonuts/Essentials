@@ -40,7 +40,9 @@ public class EssentialsBlockListener implements Listener
 							user.getInventory().addItem(is);
 							user.updateInventory();
 						}
+
 					});
 		}
 	}
+
 }

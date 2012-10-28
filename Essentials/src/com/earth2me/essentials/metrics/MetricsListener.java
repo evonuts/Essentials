@@ -27,7 +27,8 @@ public class MetricsListener implements Listener
 	public void onPlayerJoin(final PlayerJoinEvent event)
 	{
 		final User player = ess.getUser(event.getPlayer());
-		if (ess.getSettings().isMetricsEnabled() == false && (player.isAuthorized("essentials.essentials") || player.isAuthorized("bukkit.broadcast.admin")))
+		if (ess.getSettings().isMetricsEnabled() == false && (player.isAuthorized(
+				"essentials.essentials") || player.isAuthorized("bukkit.broadcast.admin")))
 		{
 			player.sendMessage("PluginMetrics collects minimal statistic data, starting in about 5 minutes.");
 			player.sendMessage("To opt out, run /essentials opt-out");

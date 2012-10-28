@@ -17,7 +17,8 @@ public class SignEnchant extends EssentialsSign
 	@Override
 	protected boolean onSignCreate(final ISign sign, final User player, final String username, final IEssentials ess) throws SignException, ChargeException
 	{
-		final ItemStack stack = sign.getLine(1).equals("*") || sign.getLine(1).equalsIgnoreCase("any") ? null : getItemStack(sign.getLine(1), 1, ess);
+		final ItemStack stack = sign.getLine(1).equals("*") || sign.getLine(1).equalsIgnoreCase(
+				"any") ? null : getItemStack(sign.getLine(1), 1, ess);
 		final String[] enchantLevel = sign.getLine(2).split(":");
 		if (enchantLevel.length != 2)
 		{
@@ -63,7 +64,8 @@ public class SignEnchant extends EssentialsSign
 	@Override
 	protected boolean onSignInteract(ISign sign, User player, String username, IEssentials ess) throws SignException, ChargeException
 	{
-		final ItemStack search = sign.getLine(1).equals("*") || sign.getLine(1).equalsIgnoreCase("any") ? null : getItemStack(sign.getLine(1), 1, ess);
+		final ItemStack search = sign.getLine(1).equals("*") || sign.getLine(1).equalsIgnoreCase(
+				"any") ? null : getItemStack(sign.getLine(1), 1, ess);
 		int slot = -1;
 		final Trade charge = getTrade(sign, 3, ess);
 		charge.isAffordableFor(player);
@@ -88,16 +90,15 @@ public class SignEnchant extends EssentialsSign
 		}
 
 		final ItemStack playerHand = player.getItemInHand();
-		if (playerHand == null
-			|| playerHand.getAmount() != 1
-			|| (playerHand.containsEnchantment(enchantment)
-				&& playerHand.getEnchantmentLevel(enchantment) == level))
+		if (playerHand == null || playerHand.getAmount() != 1 || (playerHand.containsEnchantment(
+				enchantment) && playerHand.getEnchantmentLevel(enchantment) == level))
 		{
 			throw new SignException(_("missingItems", 1, sign.getLine(1)));
 		}
 		if (search != null && playerHand.getType() != search.getType())
 		{
-			throw new SignException(_("missingItems", 1, search.getType().toString().toLowerCase(Locale.ENGLISH).replace('_', ' ')));
+			throw new SignException(
+					_("missingItems", 1, search.getType().toString().toLowerCase(Locale.ENGLISH).replace('_', ' ')));
 		}
 
 		final ItemStack toEnchant = playerHand;
@@ -111,7 +112,8 @@ public class SignEnchant extends EssentialsSign
 		}
 
 		charge.charge(player);
-		Trade.log("Sign", "Enchant", "Interact", username, charge, username, charge, sign.getBlock().getLocation(), ess);
+		Trade.log(
+				"Sign", "Enchant", "Interact", username, charge, username, charge, sign.getBlock().getLocation(), ess);
 		player.updateInventory();
 		return true;
 	}

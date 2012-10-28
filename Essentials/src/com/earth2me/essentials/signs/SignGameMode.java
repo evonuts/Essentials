@@ -45,7 +45,8 @@ public class SignGameMode extends EssentialsSign
 		charge.isAffordableFor(player);
 
 		performSetMode(mode.toLowerCase(Locale.ENGLISH), player);
-		player.sendMessage(_("gameMode", _(player.getGameMode().toString().toLowerCase(Locale.ENGLISH)), player.getDisplayName()));
+		player.sendMessage(
+				_("gameMode", _(player.getGameMode().toString().toLowerCase(Locale.ENGLISH)), player.getDisplayName()));
 		charge.charge(player);
 		return true;
 	}

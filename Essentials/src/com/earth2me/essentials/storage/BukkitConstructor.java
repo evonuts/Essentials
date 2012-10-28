@@ -283,8 +283,10 @@ public class BukkitConstructor extends Constructor
 			{
 				final Field typeDefField = Constructor.class.getDeclaredField("typeDefinitions");
 				typeDefField.setAccessible(true);
-				typeDefinitions = (Map<Class<? extends Object>, TypeDescription>)typeDefField.get((Constructor)BukkitConstructor.this);
-				if (typeDefinitions == null) {
+				typeDefinitions = (Map<Class<? extends Object>, TypeDescription>)typeDefField.get(
+						(Constructor)BukkitConstructor.this);
+				if (typeDefinitions == null)
+				{
 					throw new NullPointerException();
 				}
 			}
@@ -395,8 +397,8 @@ public class BukkitConstructor extends Constructor
 				}
 				catch (Exception e)
 				{
-					throw new YAMLException("Cannot create property=" + key + " for JavaBean="
-											+ object + "; " + e.getMessage(), e);
+					throw new YAMLException(
+							"Cannot create property=" + key + " for JavaBean=" + object + "; " + e.getMessage(), e);
 				}
 			}
 			return object;

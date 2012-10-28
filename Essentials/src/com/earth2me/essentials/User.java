@@ -70,8 +70,8 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 		}
 		return result;
 	}
-	
-	private boolean isAuthorizedCheck(final String node) 
+
+	private boolean isAuthorizedCheck(final String node)
 	{
 
 		if (base instanceof OfflinePlayer)
@@ -92,11 +92,16 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 		{
 			if (ess.getSettings().isDebug())
 			{
-				ess.getLogger().log(Level.SEVERE, "Permission System Error: " + ess.getPermissionsHandler().getName() + " returned: " + ex.getMessage(), ex);
+				ess.getLogger().log(
+						Level.SEVERE,
+						"Permission System Error: " + ess.getPermissionsHandler().getName() + " returned: " + ex.getMessage(),
+						ex);
 			}
 			else
 			{
-				ess.getLogger().log(Level.SEVERE, "Permission System Error: " + ess.getPermissionsHandler().getName() + " returned: " + ex.getMessage());
+				ess.getLogger().log(
+						Level.SEVERE,
+						"Permission System Error: " + ess.getPermissionsHandler().getName() + " returned: " + ex.getMessage());
 			}
 
 			return false;
@@ -137,7 +142,10 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 		sendMessage(_("addedToAccount", Util.displayCurrency(value, ess)));
 		if (initiator != null)
 		{
-			initiator.sendMessage(_("addedToOthersAccount", Util.displayCurrency(value, ess), this.getDisplayName(), Util.displayCurrency(getMoney(), ess)));
+			initiator.sendMessage(
+					_(
+							"addedToOthersAccount", Util.displayCurrency(value, ess), this.getDisplayName(),
+							Util.displayCurrency(getMoney(), ess)));
 		}
 	}
 
@@ -176,7 +184,10 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 		sendMessage(_("takenFromAccount", Util.displayCurrency(value, ess)));
 		if (initiator != null)
 		{
-			initiator.sendMessage(_("takenFromOthersAccount", Util.displayCurrency(value, ess), this.getDisplayName(), Util.displayCurrency(getMoney(), ess)));
+			initiator.sendMessage(
+					_(
+							"takenFromOthersAccount", Util.displayCurrency(value, ess), this.getDisplayName(),
+							Util.displayCurrency(getMoney(), ess)));
 		}
 	}
 
@@ -357,7 +368,9 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 				{
 					if (ess.getSettings().isDebug())
 					{
-						logger.log(Level.INFO, "Playerlist for " + name + " was not updated. Name clashed with another online player.");
+						logger.log(
+								Level.INFO,
+								"Playerlist for " + name + " was not updated. Name clashed with another online player.");
 					}
 				}
 			}
@@ -547,8 +560,8 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 	public void checkActivity()
 	{
 		final long autoafkkick = ess.getSettings().getAutoAfkKick();
-		if (autoafkkick > 0 && lastActivity > 0 && (lastActivity + (autoafkkick * 1000)) < System.currentTimeMillis()
-			&& !isHidden() && !isAuthorized("essentials.kick.exempt") && !isAuthorized("essentials.afk.kickexempt"))
+		if (autoafkkick > 0 && lastActivity > 0 && (lastActivity + (autoafkkick * 1000)) < System.currentTimeMillis() && !isHidden() && !isAuthorized(
+				"essentials.kick.exempt") && !isAuthorized("essentials.afk.kickexempt"))
 		{
 			final String kickReason = _("autoAfkKickReason", autoafkkick / 60.0);
 			lastActivity = 0;
@@ -565,7 +578,8 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 			}
 		}
 		final long autoafk = ess.getSettings().getAutoAfk();
-		if (!isAfk() && autoafk > 0 && lastActivity + autoafk * 1000 < System.currentTimeMillis() && isAuthorized("essentials.afk.auto"))
+		if (!isAfk() && autoafk > 0 && lastActivity + autoafk * 1000 < System.currentTimeMillis() && isAuthorized(
+				"essentials.afk.auto"))
 		{
 			setAfk(true);
 			if (!isHidden())
@@ -584,8 +598,8 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 	@Override
 	public boolean isGodModeEnabled()
 	{
-		return (super.isGodModeEnabled() && !ess.getSettings().getNoGodWorlds().contains(getLocation().getWorld().getName()))
-			   || (isAfk() && ess.getSettings().getFreezeAfkPlayers());
+		return (super.isGodModeEnabled() && !ess.getSettings().getNoGodWorlds().contains(
+				getLocation().getWorld().getName())) || (isAfk() && ess.getSettings().getFreezeAfkPlayers());
 	}
 
 	public boolean isGodModeEnabledRaw()
@@ -637,6 +651,7 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 	{
 		enderSee = set;
 	}
+
 	private transient long teleportInvulnerabilityTimestamp = 0;
 
 	public void enableInvulnerabilityAfterTeleport()
@@ -650,8 +665,7 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 
 	public void resetInvulnerabilityAfterTeleport()
 	{
-		if (teleportInvulnerabilityTimestamp != 0
-			&& teleportInvulnerabilityTimestamp < System.currentTimeMillis())
+		if (teleportInvulnerabilityTimestamp != 0 && teleportInvulnerabilityTimestamp < System.currentTimeMillis())
 		{
 			teleportInvulnerabilityTimestamp = 0;
 		}
@@ -717,7 +731,8 @@ public class User extends UserData implements Comparable<User>, IReplyTo, IUser
 
 	public void updateThrottle()
 	{
-		lastThrottledAction = System.currentTimeMillis();;
+		lastThrottledAction = System.currentTimeMillis();
+		;
 	}
 
 	public boolean isFlyClickJump()

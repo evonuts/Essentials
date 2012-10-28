@@ -109,7 +109,7 @@ public class Commandkillall extends EssentialsCommand
 						continue;
 					}
 				}
-				if(entity instanceof Ocelot)
+				if (entity instanceof Ocelot)
 				{
 					if (((Ocelot)entity).isTamed())
 					{

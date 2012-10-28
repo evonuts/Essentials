@@ -43,7 +43,8 @@ public class AlternativeCommandsHandler
 			final List<String> labels = new ArrayList<String>(pc.getAliases());
 			labels.add(pc.getName());
 
-			PluginCommand reg = ess.getServer().getPluginCommand(pluginName + ":" + pc.getName().toLowerCase(Locale.ENGLISH));
+			PluginCommand reg = ess.getServer().getPluginCommand(
+					pluginName + ":" + pc.getName().toLowerCase(Locale.ENGLISH));
 			if (reg == null)
 			{
 				reg = ess.getServer().getPluginCommand(pc.getName().toLowerCase(Locale.ENGLISH));

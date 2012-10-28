@@ -19,7 +19,7 @@ public class KeywordReplacer implements IText
 	private final transient IText input;
 	private final transient List<String> replaced;
 	private final transient IEssentials ess;
-	
+
 	public KeywordReplacer(final IText input, final CommandSender sender, final IEssentials ess)
 	{
 		this.input = input;
@@ -27,7 +27,7 @@ public class KeywordReplacer implements IText
 		this.ess = ess;
 		replaceKeywords(sender);
 	}
-	
+
 	private void replaceKeywords(final CommandSender sender)
 	{
 		String displayName, ipAddress, balance, mails, world;
@@ -47,7 +47,8 @@ public class KeywordReplacer implements IText
 			world = user.getLocation() == null || user.getLocation().getWorld() == null ? "" : user.getLocation().getWorld().getName();
 			worldTime12 = DescParseTickFormat.format12(user.getWorld() == null ? 0 : user.getWorld().getTime());
 			worldTime24 = DescParseTickFormat.format24(user.getWorld() == null ? 0 : user.getWorld().getTime());
-			worldDate = DateFormat.getDateInstance(DateFormat.MEDIUM, ess.getI18n().getCurrentLocale()).format(DescParseTickFormat.ticksToDate(user.getWorld() == null ? 0 : user.getWorld().getFullTime()));
+			worldDate = DateFormat.getDateInstance(DateFormat.MEDIUM, ess.getI18n().getCurrentLocale()).format(
+					DescParseTickFormat.ticksToDate(user.getWorld() == null ? 0 : user.getWorld().getFullTime()));
 		}
 		else
 		{

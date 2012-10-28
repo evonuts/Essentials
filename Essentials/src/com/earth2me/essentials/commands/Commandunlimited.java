@@ -74,7 +74,8 @@ public class Commandunlimited extends EssentialsCommand
 				output.append(", ");
 			}
 			first = false;
-			final String matname = Material.getMaterial(integer).toString().toLowerCase(Locale.ENGLISH).replace("_", "");
+			final String matname = Material.getMaterial(integer).toString().toLowerCase(Locale.ENGLISH).replace(
+					"_", "");
 			output.append(matname);
 		}
 
@@ -87,12 +88,11 @@ public class Commandunlimited extends EssentialsCommand
 		stack.setAmount(Math.min(stack.getType().getMaxStackSize(), 2));
 
 		final String itemname = stack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", "");
-		if (ess.getSettings().permissionBasedItemSpawn()
-			&& (!user.isAuthorized("essentials.unlimited.item-all")
-				&& !user.isAuthorized("essentials.unlimited.item-" + itemname)
-				&& !user.isAuthorized("essentials.unlimited.item-" + stack.getTypeId())
-				&& !((stack.getType() == Material.WATER_BUCKET || stack.getType() == Material.LAVA_BUCKET)
-					 && user.isAuthorized("essentials.unlimited.item-bucket"))))
+		if (ess.getSettings().permissionBasedItemSpawn() && (!user.isAuthorized(
+				"essentials.unlimited.item-all") && !user.isAuthorized(
+				"essentials.unlimited.item-" + itemname) && !user.isAuthorized(
+				"essentials.unlimited.item-" + stack.getTypeId()) && !((stack.getType() == Material.WATER_BUCKET || stack.getType() == Material.LAVA_BUCKET) && user.isAuthorized(
+				"essentials.unlimited.item-bucket"))))
 		{
 			throw new Exception(_("unlimitedItemPermission", itemname));
 		}

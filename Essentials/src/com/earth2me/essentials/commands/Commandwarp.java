@@ -39,7 +39,8 @@ public class Commandwarp extends EssentialsCommand
 		{
 			//TODO: Remove 'otherplayers' permission.
 			User otherUser = null;
-			if (args.length == 2 && (user.isAuthorized("essentials.warp.otherplayers") || user.isAuthorized("essentials.warp.others")))
+			if (args.length == 2 && (user.isAuthorized("essentials.warp.otherplayers") || user.isAuthorized(
+					"essentials.warp.others")))
 			{
 				otherUser = ess.getUser(server.getPlayer(args[1]));
 				if (otherUser == null)
@@ -88,7 +89,8 @@ public class Commandwarp extends EssentialsCommand
 			while (iterator.hasNext())
 			{
 				final String warpName = iterator.next();
-				if (ess.getSettings().getPerWarpPermission() && !((User)sender).isAuthorized("essentials.warps." + warpName))
+				if (ess.getSettings().getPerWarpPermission() && !((User)sender).isAuthorized(
+						"essentials.warps." + warpName))
 				{
 					iterator.remove();
 				}
@@ -101,11 +103,15 @@ public class Commandwarp extends EssentialsCommand
 		}
 
 		final int warpPage = (page - 1) * WARPS_PER_PAGE;
-		final String warpList = Util.joinList(warpNameList.subList(warpPage, warpPage + Math.min(warpNameList.size() - warpPage, WARPS_PER_PAGE)));
+		final String warpList = Util.joinList(
+				warpNameList.subList(warpPage, warpPage + Math.min(warpNameList.size() - warpPage, WARPS_PER_PAGE)));
 
 		if (warpNameList.size() > WARPS_PER_PAGE)
 		{
-			sender.sendMessage(_("warpsCount", warpNameList.size(), page, (int)Math.ceil(warpNameList.size() / (double)WARPS_PER_PAGE)));
+			sender.sendMessage(
+					_(
+							"warpsCount", warpNameList.size(), page,
+							(int)Math.ceil(warpNameList.size() / (double)WARPS_PER_PAGE)));
 			sender.sendMessage(_("warpList", warpList));
 		}
 		else

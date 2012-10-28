@@ -4,9 +4,10 @@ import static com.earth2me.essentials.I18n._;
 import org.bukkit.inventory.ItemStack;
 import com.earth2me.essentials.*;
 
+
 //TODO: Sell Enchantment on Trade signs?
 public class SignTrade extends EssentialsSign
-{	
+{
 
 	public SignTrade()
 	{
@@ -46,7 +47,9 @@ public class SignTrade extends EssentialsSign
 					throw new SignException(_("tradeSignEmptyOwner"), e);
 				}
 			}
-			Trade.log("Sign", "Trade", "OwnerInteract", username, store, username, stored, sign.getBlock().getLocation(), ess);
+			Trade.log(
+					"Sign", "Trade", "OwnerInteract", username, store, username, stored, sign.getBlock().getLocation(),
+					ess);
 		}
 		else
 		{
@@ -62,7 +65,9 @@ public class SignTrade extends EssentialsSign
 				throw new ChargeException("Full inventory");
 			}
 			charge.charge(player);
-			Trade.log("Sign", "Trade", "Interact", sign.getLine(3), charge, username, trade, sign.getBlock().getLocation(), ess);
+			Trade.log(
+					"Sign", "Trade", "Interact", sign.getLine(3), charge, username, trade,
+					sign.getBlock().getLocation(), ess);
 		}
 		sign.updateSign();
 		return true;
@@ -71,10 +76,8 @@ public class SignTrade extends EssentialsSign
 	private Trade rechargeSign(final ISign sign, final IEssentials ess, final User player) throws SignException, ChargeException
 	{
 		final Trade trade = getTrade(sign, 2, false, false, ess);
-		if (trade.getItemStack() != null && player.getItemInHand() != null
-			&& trade.getItemStack().getTypeId() == player.getItemInHand().getTypeId()
-			&& trade.getItemStack().getDurability() == player.getItemInHand().getDurability()
-			&& trade.getItemStack().getEnchantments().equals(player.getItemInHand().getEnchantments()))
+		if (trade.getItemStack() != null && player.getItemInHand() != null && trade.getItemStack().getTypeId() == player.getItemInHand().getTypeId() && trade.getItemStack().getDurability() == player.getItemInHand().getDurability() && trade.getItemStack().getEnchantments().equals(
+				player.getItemInHand().getEnchantments()))
 		{
 			int amount = player.getItemInHand().getAmount();
 			amount -= amount % trade.getItemStack().getAmount();
@@ -94,8 +97,8 @@ public class SignTrade extends EssentialsSign
 	@Override
 	protected boolean onSignBreak(final ISign sign, final User player, final String username, final IEssentials ess) throws SignException
 	{
-		if ((sign.getLine(3).length() > 3 && sign.getLine(3).substring(2).equalsIgnoreCase(username))
-			|| player.isAuthorized("essentials.signs.trade.override"))
+		if ((sign.getLine(3).length() > 3 && sign.getLine(3).substring(2).equalsIgnoreCase(
+				username)) || player.isAuthorized("essentials.signs.trade.override"))
 		{
 			try
 			{
@@ -103,7 +106,9 @@ public class SignTrade extends EssentialsSign
 				final Trade stored2 = getTrade(sign, 2, true, false, ess);
 				stored1.pay(player);
 				stored2.pay(player);
-				Trade.log("Sign", "Trade", "Break", username, stored2, username, stored1, sign.getBlock().getLocation(), ess);
+				Trade.log(
+						"Sign", "Trade", "Break", username, stored2, username, stored1, sign.getBlock().getLocation(),
+						ess);
 			}
 			catch (SignException e)
 			{
@@ -155,7 +160,8 @@ public class SignTrade extends EssentialsSign
 				{
 					throw new SignException(_("moreThanZero"));
 				}
-				sign.setLine(index, Util.shortCurrency(money, ess) + ":" + Util.shortCurrency(amount, ess).substring(1));
+				sign.setLine(
+						index, Util.shortCurrency(money, ess) + ":" + Util.shortCurrency(amount, ess).substring(1));
 				return;
 			}
 		}
@@ -168,8 +174,8 @@ public class SignTrade extends EssentialsSign
 			{
 				throw new SignException(_("moreThanZero"));
 			}
-			if (!(split[1].equalsIgnoreCase("exp") || split[1].equalsIgnoreCase("xp"))
-				&& getItemStack(split[1], amount, ess).getTypeId() == 0)
+			if (!(split[1].equalsIgnoreCase("exp") || split[1].equalsIgnoreCase("xp")) && getItemStack(
+					split[1], amount, ess).getTypeId() == 0)
 			{
 				throw new SignException(_("moreThanZero"));
 			}
@@ -191,8 +197,8 @@ public class SignTrade extends EssentialsSign
 			{
 				throw new SignException(_("moreThanZero"));
 			}
-			if (!(split[1].equalsIgnoreCase("exp") || split[1].equalsIgnoreCase("xp"))
-				&& getItemStack(split[1], stackamount, ess).getTypeId() == 0)
+			if (!(split[1].equalsIgnoreCase("exp") || split[1].equalsIgnoreCase("xp")) && getItemStack(
+					split[1], stackamount, ess).getTypeId() == 0)
 			{
 				throw new SignException(_("moreThanZero"));
 			}
@@ -313,7 +319,8 @@ public class SignTrade extends EssentialsSign
 			final Double amount = getDouble(split[1]);
 			if (money != null && amount != null)
 			{
-				final String newline = Util.shortCurrency(money, ess) + ":" + Util.shortCurrency(amount + value, ess).substring(1);
+				final String newline = Util.shortCurrency(money, ess) + ":" + Util.shortCurrency(
+						amount + value, ess).substring(1);
 				if (newline.length() > 15)
 				{
 					throw new SignException("This sign is full: Line too long!");

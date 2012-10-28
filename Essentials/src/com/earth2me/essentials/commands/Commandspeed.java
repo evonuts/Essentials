@@ -63,8 +63,8 @@ public class Commandspeed extends EssentialsCommand
 
 		//if (isFly)
 		//{
-			user.setFlySpeed(getRealMoveSpeed(speed, isFly, isBypass));
-			user.sendMessage(_("moveSpeed", _("flying"), speed, user.getDisplayName()));
+		user.setFlySpeed(getRealMoveSpeed(speed, isFly, isBypass));
+		user.sendMessage(_("moveSpeed", _("flying"), speed, user.getDisplayName()));
 		//}
 		//else
 		//{
@@ -97,8 +97,8 @@ public class Commandspeed extends EssentialsCommand
 		{
 			isFlyMode = true;
 		}
-		else if (modeString.contains("walk") || modeString.contains("run")
-				 || modeString.equalsIgnoreCase("w") || modeString.equalsIgnoreCase("r"))
+		else if (modeString.contains("walk") || modeString.contains("run") || modeString.equalsIgnoreCase(
+				"w") || modeString.equalsIgnoreCase("r"))
 		{
 			isFlyMode = false;
 		}

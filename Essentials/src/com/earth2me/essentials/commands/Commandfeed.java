@@ -20,7 +20,7 @@ public class Commandfeed extends EssentialsCommand
 	{
 		if (args.length > 0 && user.isAuthorized("essentials.feed.others"))
 		{
-			feedOtherPlayers(server,user,args[0]);
+			feedOtherPlayers(server, user, args[0]);
 		}
 		else
 		{
@@ -29,8 +29,8 @@ public class Commandfeed extends EssentialsCommand
 			user.sendMessage(_("feed"));
 		}
 	}
-	
-		private void feedOtherPlayers(final Server server, final CommandSender sender, final String name)
+
+	private void feedOtherPlayers(final Server server, final CommandSender sender, final String name)
 	{
 		final List<Player> players = server.matchPlayer(name);
 		if (players.isEmpty())

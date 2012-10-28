@@ -47,9 +47,8 @@ public class Commandwhois extends EssentialsCommand
 				continue;
 			}
 			final String nickName = Util.stripFormat(user.getNickname());
-			if (!whois.equalsIgnoreCase(nickName)
-				&& !whois.substring(prefixLength).equalsIgnoreCase(nickName)
-				&& !whois.equalsIgnoreCase(user.getName()))
+			if (!whois.equalsIgnoreCase(nickName) && !whois.substring(prefixLength).equalsIgnoreCase(
+					nickName) && !whois.equalsIgnoreCase(user.getName()))
 			{
 				continue;
 			}
@@ -58,35 +57,39 @@ public class Commandwhois extends EssentialsCommand
 			user.setDisplayNick();
 			sender.sendMessage(_("whoisNick", user.getDisplayName()));
 			sender.sendMessage(_("whoisHealth", user.getHealth()));
-			sender.sendMessage(_("whoisExp", SetExpFix.getTotalExperience(user), user.getLevel()));			
-			sender.sendMessage(_("whoisLocation", user.getLocation().getWorld().getName(), user.getLocation().getBlockX(), user.getLocation().getBlockY(), user.getLocation().getBlockZ()));
+			sender.sendMessage(_("whoisExp", SetExpFix.getTotalExperience(user), user.getLevel()));
+			sender.sendMessage(
+					_(
+							"whoisLocation", user.getLocation().getWorld().getName(), user.getLocation().getBlockX(),
+							user.getLocation().getBlockY(), user.getLocation().getBlockZ()));
 			if (!ess.getSettings().isEcoDisabled())
 			{
 				sender.sendMessage(_("whoisMoney", Util.displayCurrency(user.getMoney(), ess)));
 			}
 			sender.sendMessage(_("whoisIPAddress", user.getAddress().getAddress().toString()));
 			final String location = user.getGeoLocation();
-			if (location != null
-				&& (sender instanceof Player ? ess.getUser(sender).isAuthorized("essentials.geoip.show") : true))
+			if (location != null && (sender instanceof Player ? ess.getUser(sender).isAuthorized(
+					"essentials.geoip.show") : true))
 			{
 				sender.sendMessage(_("whoisGeoLocation", location));
 			}
 			sender.sendMessage(_("whoisGamemode", _(user.getGameMode().toString().toLowerCase(Locale.ENGLISH))));
 			sender.sendMessage(_("whoisGod", (user.isGodModeEnabled() ? _("true") : _("false"))));
 			sender.sendMessage(_("whoisOp", (user.isOp() ? _("true") : _("false"))));
-			sender.sendMessage(_("whoisFly", user.getAllowFlight() ? _("true") : _("false"), user.isFlying() ? _("flying") : _("notFlying")));
+			sender.sendMessage(
+					_(
+							"whoisFly", user.getAllowFlight() ? _("true") : _("false"),
+							user.isFlying() ? _("flying") : _("notFlying")));
 			sender.sendMessage(_("whoisAFK", (user.isAfk() ? _("true") : _("false"))));
-			sender.sendMessage(_("whoisJail", (user.isJailed()
-											   ? user.getJailTimeout() > 0
-												 ? Util.formatDateDiff(user.getJailTimeout())
-												 : _("true")
-											   : _("false"))));
-			sender.sendMessage(_("whoisMuted", (user.isMuted()
-											   ? user.getMuteTimeout() > 0
-												 ? Util.formatDateDiff(user.getMuteTimeout())
-												 : _("true")
-											   : _("false"))));
-						
+			sender.sendMessage(
+					_(
+							"whoisJail", (user.isJailed() ? user.getJailTimeout() > 0 ? Util.formatDateDiff(
+							user.getJailTimeout()) : _("true") : _("false"))));
+			sender.sendMessage(
+					_(
+							"whoisMuted", (user.isMuted() ? user.getMuteTimeout() > 0 ? Util.formatDateDiff(
+							user.getMuteTimeout()) : _("true") : _("false"))));
+
 		}
 		if (!foundUser)
 		{

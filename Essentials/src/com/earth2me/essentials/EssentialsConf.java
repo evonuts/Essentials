@@ -34,6 +34,7 @@ public class EssentialsConf extends YamlConfiguration
 		super();
 		this.configFile = configFile;
 	}
+
 	private final byte[] bytebuffer = new byte[1024];
 
 	public synchronized void load()
@@ -115,12 +116,15 @@ public class EssentialsConf extends YamlConfiguration
 				{
 					buffer.rewind();
 					data.clear();
-					LOGGER.log(Level.INFO, "File " + configFile.getAbsolutePath().toString() + " is not utf-8 encoded, trying " + Charset.defaultCharset().displayName());
+					LOGGER.log(
+							Level.INFO,
+							"File " + configFile.getAbsolutePath().toString() + " is not utf-8 encoded, trying " + Charset.defaultCharset().displayName());
 					decoder = Charset.defaultCharset().newDecoder();
 					result = decoder.decode(buffer, data, true);
 					if (result.isError())
 					{
-						throw new InvalidConfigurationException("Invalid Characters in file " + configFile.getAbsolutePath().toString());
+						throw new InvalidConfigurationException(
+								"Invalid Characters in file " + configFile.getAbsolutePath().toString());
 					}
 					else
 					{
@@ -148,7 +152,10 @@ public class EssentialsConf extends YamlConfiguration
 		{
 			File broken = new File(configFile.getAbsolutePath() + ".broken." + System.currentTimeMillis());
 			configFile.renameTo(broken);
-			LOGGER.log(Level.SEVERE, "The file " + configFile.toString() + " is broken, it has been renamed to " + broken.toString(), ex.getCause());
+			LOGGER.log(
+					Level.SEVERE,
+					"The file " + configFile.toString() + " is broken, it has been renamed to " + broken.toString(),
+					ex.getCause());
 		}
 	}
 
@@ -238,12 +245,12 @@ public class EssentialsConf extends YamlConfiguration
 		{
 			throw new Exception(_("invalidWorld"));
 		}
-		return new Location(world,
-							getDouble((path == null ? "" : path + ".") + "x", 0),
-							getDouble((path == null ? "" : path + ".") + "y", 0),
-							getDouble((path == null ? "" : path + ".") + "z", 0),
-							(float)getDouble((path == null ? "" : path + ".") + "yaw", 0),
-							(float)getDouble((path == null ? "" : path + ".") + "pitch", 0));
+		return new Location(
+				world, getDouble((path == null ? "" : path + ".") + "x", 0),
+				getDouble((path == null ? "" : path + ".") + "y", 0),
+				getDouble((path == null ? "" : path + ".") + "z", 0),
+				(float)getDouble((path == null ? "" : path + ".") + "yaw", 0),
+				(float)getDouble((path == null ? "" : path + ".") + "pitch", 0));
 	}
 
 	public void setProperty(final String path, final Location loc)
@@ -260,8 +267,7 @@ public class EssentialsConf extends YamlConfiguration
 	public ItemStack getItemStack(final String path)
 	{
 		final ItemStack stack = new ItemStack(
-				Material.valueOf(getString(path + ".type", "AIR")),
-				getInt(path + ".amount", 1),
+				Material.valueOf(getString(path + ".type", "AIR")), getInt(path + ".amount", 1),
 				(short)getInt(path + ".damage", 0));
 		final ConfigurationSection enchants = getConfigurationSection(path + ".enchant");
 		if (enchants != null)
@@ -666,4 +672,5 @@ public class EssentialsConf extends YamlConfiguration
 	{
 		super.set(path, value);
 	}
+
 }

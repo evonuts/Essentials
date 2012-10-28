@@ -69,29 +69,26 @@ public class Trade
 			ess.getLogger().log(Level.INFO, "checking if " + user.getName() + " can afford charge.");
 		}
 
-		if (getMoney() != null
-			&& getMoney() > 0
-			&& !user.canAfford(getMoney()))
+		if (getMoney() != null && getMoney() > 0 && !user.canAfford(getMoney()))
 		{
 			throw new ChargeException(_("notEnoughMoney"));
 		}
 
-		if (getItemStack() != null
-			&& !InventoryWorkaround.containsItem(user.getInventory(), true, true, itemStack))
+		if (getItemStack() != null && !InventoryWorkaround.containsItem(user.getInventory(), true, true, itemStack))
 		{
-			throw new ChargeException(_("missingItems", getItemStack().getAmount(), getItemStack().getType().toString().toLowerCase(Locale.ENGLISH).replace("_", " ")));
+			throw new ChargeException(
+					_(
+							"missingItems", getItemStack().getAmount(),
+							getItemStack().getType().toString().toLowerCase(Locale.ENGLISH).replace("_", " ")));
 		}
 
 		double money;
-		if (command != null && !command.isEmpty()
-			&& 0 < (money = getCommandCost(user))
-			&& !user.canAfford(money))
+		if (command != null && !command.isEmpty() && 0 < (money = getCommandCost(user)) && !user.canAfford(money))
 		{
 			throw new ChargeException(_("notEnoughMoney"));
 		}
 
-		if (exp != null && exp > 0
-			&& SetExpFix.getTotalExperience(user) < exp)
+		if (exp != null && exp > 0 && SetExpFix.getTotalExperience(user) < exp)
 		{
 			throw new ChargeException(_("notEnoughExperience"));
 		}
@@ -113,7 +110,8 @@ public class Trade
 		{
 			if (dropItems)
 			{
-				final Map<Integer, ItemStack> leftOver = InventoryWorkaround.addItem(user.getInventory(), true, getItemStack());
+				final Map<Integer, ItemStack> leftOver = InventoryWorkaround.addItem(
+						user.getInventory(), true, getItemStack());
 				final Location loc = user.getLocation();
 				for (ItemStack itemStack : leftOver.values())
 				{
@@ -167,7 +165,10 @@ public class Trade
 		{
 			if (!InventoryWorkaround.containsItem(user.getInventory(), true, true, itemStack))
 			{
-				throw new ChargeException(_("missingItems", getItemStack().getAmount(), getItemStack().getType().toString().toLowerCase(Locale.ENGLISH).replace("_", " ")));
+				throw new ChargeException(
+						_(
+								"missingItems", getItemStack().getAmount(),
+								getItemStack().getType().toString().toLowerCase(Locale.ENGLISH).replace("_", " ")));
 			}
 			InventoryWorkaround.removeItem(user.getInventory(), true, true, getItemStack());
 			user.updateInventory();
@@ -220,25 +221,26 @@ public class Trade
 
 			if (ess.getSettings().isDebug())
 			{
-				ess.getLogger().log(Level.INFO, "calculated command (" + command + ") cost for " + user.getName() + " as " + cost);
+				ess.getLogger().log(
+						Level.INFO, "calculated command (" + command + ") cost for " + user.getName() + " as " + cost);
 			}
 		}
-		if (cost != 0.0d && (user.isAuthorized("essentials.nocommandcost.all")
-							 || user.isAuthorized("essentials.nocommandcost." + command)))
+		if (cost != 0.0d && (user.isAuthorized("essentials.nocommandcost.all") || user.isAuthorized(
+				"essentials.nocommandcost." + command)))
 		{
 			return 0.0d;
 		}
 		return cost;
 	}
+
 	private static FileWriter fw = null;
 
 	public static void log(String type, String subtype, String event, String sender, Trade charge, String receiver, Trade pay, Location loc, IEssentials ess)
 	{
 		//isEcoLogUpdateEnabled() - This refers to log entries with no location, ie API updates #EasterEgg
 		//isEcoLogEnabled() - This refers to log entries with with location, ie /pay /sell and eco signs.
-		
-		if ((loc == null && !ess.getSettings().isEcoLogUpdateEnabled())
-			|| (loc != null && !ess.getSettings().isEcoLogEnabled()))
+
+		if ((loc == null && !ess.getSettings().isEcoLogUpdateEnabled()) || (loc != null && !ess.getSettings().isEcoLogEnabled()))
 		{
 			return;
 		}

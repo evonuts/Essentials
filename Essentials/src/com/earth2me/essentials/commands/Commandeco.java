@@ -49,7 +49,7 @@ public class Commandeco extends EssentialsCommand
 					if (player.canAfford(amount, false))
 					{
 						player.takeMoney(amount);
-					}					
+					}
 					break;
 
 				case RESET:

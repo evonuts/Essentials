@@ -76,10 +76,7 @@ public class EssentialsPlayerListener implements Listener
 	@EventHandler(priority = EventPriority.HIGH, ignoreCancelled = true)
 	public void onPlayerMove(final PlayerMoveEvent event)
 	{
-		if ((!ess.getSettings().cancelAfkOnMove() && !ess.getSettings().getFreezeAfkPlayers())
-			|| event.getFrom().getBlockX() == event.getTo().getBlockX()
-			   && event.getFrom().getBlockZ() == event.getTo().getBlockZ()
-			   && event.getFrom().getBlockY() == event.getTo().getBlockY())
+		if ((!ess.getSettings().cancelAfkOnMove() && !ess.getSettings().getFreezeAfkPlayers()) || event.getFrom().getBlockX() == event.getTo().getBlockX() && event.getFrom().getBlockZ() == event.getTo().getBlockZ() && event.getFrom().getBlockY() == event.getTo().getBlockY())
 		{
 			return;
 		}
@@ -138,14 +135,16 @@ public class EssentialsPlayerListener implements Listener
 	@EventHandler(priority = EventPriority.MONITOR)
 	public void onPlayerJoin(final PlayerJoinEvent event)
 	{
-		ess.scheduleAsyncDelayedTask(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				delayedJoin(event.getPlayer());
-			}
-		});
+		ess.scheduleAsyncDelayedTask(
+				new Runnable()
+				{
+					@Override
+					public void run()
+					{
+						delayedJoin(event.getPlayer());
+					}
+
+				});
 	}
 
 	public void delayedJoin(final Player player)
@@ -166,7 +165,8 @@ public class EssentialsPlayerListener implements Listener
 			for (String p : ess.getVanishedPlayers())
 			{
 				Player toVanish = ess.getUser(p).getBase();
-				if (toVanish.isOnline()) {
+				if (toVanish.isOnline())
+				{
 					user.hidePlayer(toVanish);
 				}
 			}
@@ -224,14 +224,16 @@ public class EssentialsPlayerListener implements Listener
 		if (loc != null)
 		{
 			final Location updateLoc = loc;
-			ess.scheduleSyncDelayedTask(new Runnable()
-			{
-				@Override
-				public void run()
-				{
-					user.setCompassTarget(updateLoc);
-				}
-			});
+			ess.scheduleSyncDelayedTask(
+					new Runnable()
+					{
+						@Override
+						public void run()
+						{
+							user.setCompassTarget(updateLoc);
+						}
+
+					});
 		}
 	}
 
@@ -262,7 +264,9 @@ public class EssentialsPlayerListener implements Listener
 		if (!banExpired && (user.isBanned() || event.getResult() == Result.KICK_BANNED))
 		{
 			final String banReason = user.getBanReason();
-			event.disallow(Result.KICK_BANNED, banReason != null && !banReason.isEmpty() && !banReason.equalsIgnoreCase("ban") ? banReason : _("defaultBanReason"));
+			event.disallow(
+					Result.KICK_BANNED, banReason != null && !banReason.isEmpty() && !banReason.equalsIgnoreCase(
+					"ban") ? banReason : _("defaultBanReason"));
 			return;
 		}
 
@@ -313,23 +317,29 @@ public class EssentialsPlayerListener implements Listener
 		if (user.hasUnlimited(new ItemStack(event.getBucket())))
 		{
 			event.getItemStack().setType(event.getBucket());
-			ess.scheduleSyncDelayedTask(new Runnable()
-			{
-				@Override
-				public void run()
-				{
-					user.updateInventory();
-				}
-			});
+			ess.scheduleSyncDelayedTask(
+					new Runnable()
+					{
+						@Override
+						public void run()
+						{
+							user.updateInventory();
+						}
+
+					});
 		}
 	}
-	private final static List<String> COMMANDS = Arrays.asList("msg", "r", "mail", "m", "t", "whisper", "emsg", "tell", "er", "reply", "ereply", "email", "action", "describe", "eme", "eaction", "edescribe", "etell", "ewhisper", "pm");
+
+	private final static List<String> COMMANDS = Arrays.asList(
+			"msg", "r", "mail", "m", "t", "whisper", "emsg", "tell", "er", "reply", "ereply", "email", "action",
+			"describe", "eme", "eaction", "edescribe", "etell", "ewhisper", "pm");
 
 	@EventHandler(priority = EventPriority.MONITOR, ignoreCancelled = true)
 	public void onPlayerCommandPreprocess(final PlayerCommandPreprocessEvent event)
 	{
 		final Player player = event.getPlayer();
-		final String cmd = event.getMessage().toLowerCase(Locale.ENGLISH).split(" ")[0].replace("/", "").toLowerCase(Locale.ENGLISH);
+		final String cmd = event.getMessage().toLowerCase(Locale.ENGLISH).split(" ")[0].replace("/", "").toLowerCase(
+				Locale.ENGLISH);
 		if (COMMANDS.contains(cmd))
 		{
 			for (Player onlinePlayer : ess.getServer().getOnlinePlayers())
@@ -352,9 +362,10 @@ public class EssentialsPlayerListener implements Listener
 	public void onPlayerChangedWorldHack(final PlayerChangedWorldEvent event)
 	{
 		final Player user = event.getPlayer();
-		if (user.getGameMode() != GameMode.CREATIVE) {
-			user.setAllowFlight(false);	
-		}		
+		if (user.getGameMode() != GameMode.CREATIVE)
+		{
+			user.setAllowFlight(false);
+		}
 		user.setFlySpeed(0.1f);
 		user.setWalkSpeed(0.2f);
 	}
@@ -387,7 +398,10 @@ public class EssentialsPlayerListener implements Listener
 			{
 				Player player = event.getPlayer();
 				player.setBedSpawnLocation(event.getClickedBlock().getLocation());
-				player.sendMessage(_("homeSet", player.getLocation().getWorld().getName(), player.getLocation().getBlockX(), player.getLocation().getBlockY(), player.getLocation().getBlockZ()));
+				player.sendMessage(
+						_(
+						"homeSet", player.getLocation().getWorld().getName(), player.getLocation().getBlockX(),
+						player.getLocation().getBlockY(), player.getLocation().getBlockZ()));
 			}
 			break;
 		case LEFT_CLICK_AIR:
@@ -404,7 +418,8 @@ public class EssentialsPlayerListener implements Listener
 			if (event.getItem() != null && event.getItem().getTypeId() != AIR)
 			{
 				final User user = ess.getUser(event.getPlayer());
-				if (user.hasPowerTools() && user.arePowerToolsEnabled() && usePowertools(user, event.getItem().getTypeId()))
+				if (user.hasPowerTools() && user.arePowerToolsEnabled() && usePowertools(
+						user, event.getItem().getTypeId()))
 				{
 					event.setCancelled(true);
 				}
@@ -431,12 +446,14 @@ public class EssentialsPlayerListener implements Listener
 							Location loc = user.getLocation();
 							loc.setX(otarget.getX());
 							loc.setZ(otarget.getZ());
-							while (Util.isBlockDamaging(loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ()))
+							while (Util.isBlockDamaging(
+									loc.getWorld(), loc.getBlockX(), loc.getBlockY() - 1, loc.getBlockZ()))
 							{
 								loc.setY(loc.getY() + 1d);
 							}
 							user.getBase().teleport(loc, TeleportCause.PLUGIN);
 						}
+
 					});
 		}
 		catch (Exception ex)
@@ -478,8 +495,11 @@ public class EssentialsPlayerListener implements Listener
 							public void run()
 							{
 								user.getServer().dispatchCommand(user.getBase(), command);
-								LOGGER.log(Level.INFO, String.format("[PT] %s issued server command: /%s", user.getName(), command));
+								LOGGER.log(
+										Level.INFO, String.format(
+										"[PT] %s issued server command: /%s", user.getName(), command));
 							}
+
 						});
 			}
 		}
@@ -508,9 +528,8 @@ public class EssentialsPlayerListener implements Listener
 			if (invHolder != null && invHolder instanceof HumanEntity)
 			{
 				final User invOwner = ess.getUser((HumanEntity)invHolder);
-				if (user.isInvSee() && (!user.isAuthorized("essentials.invsee.modify")
-										|| invOwner.isAuthorized("essentials.invsee.preventmodify")
-										|| !invOwner.isOnline()))
+				if (user.isInvSee() && (!user.isAuthorized("essentials.invsee.modify") || invOwner.isAuthorized(
+										"essentials.invsee.preventmodify") || !invOwner.isOnline()))
 				{
 					event.setCancelled(true);
 				}
@@ -540,4 +559,5 @@ public class EssentialsPlayerListener implements Listener
 			user.setEnderSee(false);
 		}
 	}
+
 }

@@ -180,7 +180,8 @@ public class Commandspawnmob extends EssentialsCommand
 						changeMobData(mobMount.getType(), spawnedMount, mountData, user);
 					}
 				}
-				user.sendMessage(mobCount + " " + mob.name.toLowerCase(Locale.ENGLISH) + mob.suffix + " " + _("spawned"));
+				user.sendMessage(
+						mobCount + " " + mob.name.toLowerCase(Locale.ENGLISH) + mob.suffix + " " + _("spawned"));
 			}
 			catch (MobException e1)
 			{
@@ -247,8 +248,7 @@ public class Commandspawnmob extends EssentialsCommand
 			tameable.setTamed(true);
 			tameable.setOwner(user.getBase());
 		}
-		if (type == EntityType.WOLF
-			&& data.contains("angry"))
+		if (type == EntityType.WOLF && data.contains("angry"))
 		{
 			((Wolf)spawned).setAngry(true);
 		}

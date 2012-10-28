@@ -10,7 +10,7 @@ import com.nijiko.coelho.iConomy.system.Account;
  * iConomy 4 Implementation of Method
  *
  * @author Nijikokun <nijikokun@shortmail.com> (@nijikokun) @copyright (c) 2011 @license AOL license
- * <http://aol.nexua.org>
+ *         <http://aol.nexua.org>
  */
 public class iCo4 implements Method
 {
@@ -131,9 +131,8 @@ public class iCo4 implements Method
 	@Override
 	public boolean isCompatible(Plugin plugin)
 	{
-		return plugin.getDescription().getName().equalsIgnoreCase("iconomy")
-			   && plugin.getClass().getName().equals("com.nijiko.coelho.iConomy.iConomy")
-			   && plugin instanceof iConomy;
+		return plugin.getDescription().getName().equalsIgnoreCase("iconomy") && plugin.getClass().getName().equals(
+				"com.nijiko.coelho.iConomy.iConomy") && plugin instanceof iConomy;
 	}
 
 	@Override

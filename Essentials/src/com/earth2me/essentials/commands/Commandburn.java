@@ -20,7 +20,7 @@ public class Commandburn extends EssentialsCommand
 		{
 			throw new NotEnoughArgumentsException();
 		}
-		
+
 		//TODO: TL this
 		if (args[0].trim().length() < 2)
 		{

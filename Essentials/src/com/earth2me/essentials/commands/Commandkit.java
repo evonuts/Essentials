@@ -64,12 +64,12 @@ public class Commandkit extends EssentialsCommand
 	}
 
 	private void giveKit(User userTo, User userFrom, String kitName) throws Exception
-	{		
+	{
 		if (kitName.isEmpty())
 		{
 			throw new Exception(_("kitError2"));
 		}
-		
+
 		final Map<String, Object> kit = ess.getSettings().getKit(kitName);
 
 		if (!userFrom.isAuthorized("essentials.kits." + kitName))

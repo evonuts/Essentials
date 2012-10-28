@@ -41,7 +41,7 @@ public enum Mob
 	WITHER("Wither", Enemies.ENEMY, EntityType.WITHER),
 	BAT("Bat", Enemies.NEUTRAL, EntityType.BAT),
 	WITCH("Witch", Enemies.ENEMY, EntityType.WITCH);
-	
+
 	public static final Logger logger = Logger.getLogger("Minecraft");
 
 	private Mob(String n, Enemies en, String s, EntityType type)
@@ -58,6 +58,7 @@ public enum Mob
 		this.type = en;
 		this.bukkitType = type;
 	}
+
 	public String suffix = "s";
 	final public String name;
 	final public Enemies type;
@@ -72,13 +73,15 @@ public enum Mob
 		}
 	}
 
-	public static Set<String> getMobList() {
+	public static Set<String> getMobList()
+	{
 		return Collections.unmodifiableSet(hashMap.keySet());
 	}
 
 	public LivingEntity spawn(final Player player, final Server server, final Location loc) throws MobException
 	{
-		final LivingEntity entity = player.getWorld().spawn(loc, (Class<? extends LivingEntity>)this.bukkitType.getEntityClass());
+		final LivingEntity entity = player.getWorld().spawn(
+				loc, (Class<? extends LivingEntity>)this.bukkitType.getEntityClass());
 		if (entity == null)
 		{
 			logger.log(Level.WARNING, _("unableToSpawnMob"));
@@ -98,6 +101,7 @@ public enum Mob
 		{
 			this.type = type;
 		}
+
 		final protected String type;
 	}
 

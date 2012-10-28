@@ -29,8 +29,7 @@ public class Commandtogglejail extends EssentialsCommand
 		{
 			if (!player.isOnline())
 			{
-				if (sender instanceof Player
-					&& !ess.getUser(sender).isAuthorized("essentials.togglejail.offline"))
+				if (sender instanceof Player && !ess.getUser(sender).isAuthorized("essentials.togglejail.offline"))
 				{
 					sender.sendMessage(_("mayNotJail"));
 					return;
@@ -64,9 +63,9 @@ public class Commandtogglejail extends EssentialsCommand
 				timeDiff = Util.parseDateDiff(time, true);
 				player.setJailTimeout(timeDiff);
 			}
-			sender.sendMessage((timeDiff > 0
-								? _("playerJailedFor", player.getName(), Util.formatDateDiff(timeDiff))
-								: _("playerJailed", player.getName())));
+			sender.sendMessage(
+					(timeDiff > 0 ? _("playerJailedFor", player.getName(), Util.formatDateDiff(timeDiff)) : _(
+							"playerJailed", player.getName())));
 			return;
 		}
 

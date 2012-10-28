@@ -8,6 +8,7 @@ import com.earth2me.essentials.Trade;
 import com.earth2me.essentials.User;
 import com.earth2me.essentials.Util;
 
+
 // This method contains an undocumented sub command #EasterEgg
 public class Commandjump extends EssentialsCommand
 {

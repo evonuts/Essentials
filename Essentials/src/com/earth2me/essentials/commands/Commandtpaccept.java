@@ -25,16 +25,16 @@ public class Commandtpaccept extends EssentialsCommand
 			throw new Exception(_("noPendingRequest"));
 		}
 
-		if (user.isTpRequestHere() && ((!target.isAuthorized("essentials.tpahere") && !target.isAuthorized("essentials.tpaall"))
-									   || (user.getWorld() != target.getWorld() && ess.getSettings().isWorldTeleportPermissions()
-										   && !user.isAuthorized("essentials.worlds." + user.getWorld().getName()))))
+		if (user.isTpRequestHere() && ((!target.isAuthorized("essentials.tpahere") && !target.isAuthorized(
+				"essentials.tpaall")) || (user.getWorld() != target.getWorld() && ess.getSettings().isWorldTeleportPermissions() && !user.isAuthorized(
+				"essentials.worlds." + user.getWorld().getName()))))
 		{
 			throw new Exception(_("noPendingRequest"));
 		}
 
-		if (!user.isTpRequestHere() && (!target.isAuthorized("essentials.tpa")
-										|| (user.getWorld() != target.getWorld() && ess.getSettings().isWorldTeleportPermissions()
-											&& !user.isAuthorized("essentials.worlds." + target.getWorld().getName()))))
+		if (!user.isTpRequestHere() && (!target.isAuthorized(
+				"essentials.tpa") || (user.getWorld() != target.getWorld() && ess.getSettings().isWorldTeleportPermissions() && !user.isAuthorized(
+				"essentials.worlds." + target.getWorld().getName()))))
 		{
 			throw new Exception(_("noPendingRequest"));
 		}

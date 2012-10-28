@@ -47,18 +47,13 @@ public class Commandworth extends EssentialsCommand
 			throw new Exception(_("itemCannotBeSold"));
 		}
 
-		user.sendMessage(iStack.getDurability() != 0
-						 ? _("worthMeta",
-							 iStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", ""),
-							 iStack.getDurability(),
-							 Util.displayCurrency(worth * amount, ess),
-							 amount,
-							 Util.displayCurrency(worth, ess))
-						 : _("worth",
-							 iStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", ""),
-							 Util.displayCurrency(worth * amount, ess),
-							 amount,
-							 Util.displayCurrency(worth, ess)));
+		user.sendMessage(
+				iStack.getDurability() != 0 ? _(
+						"worthMeta", iStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", ""),
+						iStack.getDurability(), Util.displayCurrency(worth * amount, ess), amount,
+						Util.displayCurrency(worth, ess)) : _(
+						"worth", iStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", ""),
+						Util.displayCurrency(worth * amount, ess), amount, Util.displayCurrency(worth, ess)));
 	}
 
 	@Override
@@ -91,18 +86,13 @@ public class Commandworth extends EssentialsCommand
 			throw new Exception(_("itemCannotBeSold"));
 		}
 
-		sender.sendMessage(iStack.getDurability() != 0
-						   ? _("worthMeta",
-							   iStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", ""),
-							   iStack.getDurability(),
-							   Util.displayCurrency(worth * amount, ess),
-							   amount,
-							   Util.displayCurrency(worth, ess))
-						   : _("worth",
-							   iStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", ""),
-							   Util.displayCurrency(worth * amount, ess),
-							   amount,
-							   Util.displayCurrency(worth, ess)));
+		sender.sendMessage(
+				iStack.getDurability() != 0 ? _(
+						"worthMeta", iStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", ""),
+						iStack.getDurability(), Util.displayCurrency(worth * amount, ess), amount,
+						Util.displayCurrency(worth, ess)) : _(
+						"worth", iStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", ""),
+						Util.displayCurrency(worth * amount, ess), amount, Util.displayCurrency(worth, ess)));
 
 	}
 }

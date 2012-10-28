@@ -41,7 +41,7 @@ public class Commandgamemode extends EssentialsCommand
 			gamemodeOtherPlayers(server, user, gameMode, args[1]);
 			return;
 		}
-		else 
+		else
 		{
 			try
 			{
@@ -63,7 +63,8 @@ public class Commandgamemode extends EssentialsCommand
 			gameMode = user.getGameMode() == GameMode.SURVIVAL ? GameMode.CREATIVE : user.getGameMode() == GameMode.CREATIVE ? GameMode.ADVENTURE : GameMode.SURVIVAL;
 		}
 		user.setGameMode(gameMode);
-		user.sendMessage(_("gameMode", _(user.getGameMode().toString().toLowerCase(Locale.ENGLISH)), user.getDisplayName()));
+		user.sendMessage(
+				_("gameMode", _(user.getGameMode().toString().toLowerCase(Locale.ENGLISH)), user.getDisplayName()));
 	}
 
 	private void gamemodeOtherPlayers(final Server server, final CommandSender sender, final GameMode gameMode, final String player) throws NotEnoughArgumentsException
@@ -83,7 +84,8 @@ public class Commandgamemode extends EssentialsCommand
 				continue;
 			}
 			user.setGameMode(gameMode);
-			sender.sendMessage(_("gameMode", _(user.getGameMode().toString().toLowerCase(Locale.ENGLISH)), user.getDisplayName()));
+			sender.sendMessage(
+					_("gameMode", _(user.getGameMode().toString().toLowerCase(Locale.ENGLISH)), user.getDisplayName()));
 			foundUser = true;
 		}
 		if (!foundUser)
@@ -95,23 +97,23 @@ public class Commandgamemode extends EssentialsCommand
 	private GameMode matchGameMode(String modeString) throws NotEnoughArgumentsException
 	{
 		GameMode mode = null;
-		if (modeString.equalsIgnoreCase("gmc") || modeString.equalsIgnoreCase("egmc")
-			|| modeString.contains("creat") || modeString.equalsIgnoreCase("1") || modeString.equalsIgnoreCase("c"))
+		if (modeString.equalsIgnoreCase("gmc") || modeString.equalsIgnoreCase("egmc") || modeString.contains(
+				"creat") || modeString.equalsIgnoreCase("1") || modeString.equalsIgnoreCase("c"))
 		{
 			mode = GameMode.CREATIVE;
 		}
-		else if (modeString.equalsIgnoreCase("gms") || modeString.equalsIgnoreCase("egms")
-				 || modeString.contains("survi") || modeString.equalsIgnoreCase("0") || modeString.equalsIgnoreCase("s"))
+		else if (modeString.equalsIgnoreCase("gms") || modeString.equalsIgnoreCase("egms") || modeString.contains(
+				"survi") || modeString.equalsIgnoreCase("0") || modeString.equalsIgnoreCase("s"))
 		{
 			mode = GameMode.SURVIVAL;
 		}
-		else if (modeString.equalsIgnoreCase("gma") || modeString.equalsIgnoreCase("egma")
-				 || modeString.contains("advent") || modeString.equalsIgnoreCase("2") || modeString.equalsIgnoreCase("a"))
+		else if (modeString.equalsIgnoreCase("gma") || modeString.equalsIgnoreCase("egma") || modeString.contains(
+				"advent") || modeString.equalsIgnoreCase("2") || modeString.equalsIgnoreCase("a"))
 		{
 			mode = GameMode.ADVENTURE;
 		}
-		else if (modeString.equalsIgnoreCase("gmt") || modeString.equalsIgnoreCase("egmt")
-				 || modeString.contains("toggle") || modeString.contains("cycle") || modeString.equalsIgnoreCase("t"))
+		else if (modeString.equalsIgnoreCase("gmt") || modeString.equalsIgnoreCase("egmt") || modeString.contains(
+				"toggle") || modeString.contains("cycle") || modeString.equalsIgnoreCase("t"))
 		{
 			mode = null;
 		}

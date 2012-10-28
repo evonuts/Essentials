@@ -25,7 +25,7 @@ public class SignPlayerListener implements Listener
 	//Right clicking signs with a block in hand, can now fire cancelled events.
 	//This is because when the block place is cancelled (for example not enough space for the block to be placed),
 	//the event will be marked as cancelled, thus preventing 30% of sign purchases.
-	
+
 	@EventHandler(priority = EventPriority.LOW)
 	public void onPlayerInteract(final PlayerInteractEvent event)
 	{
@@ -77,8 +77,7 @@ public class SignPlayerListener implements Listener
 		{
 			for (EssentialsSign sign : ess.getSettings().enabledSigns())
 			{
-				if (sign.getBlocks().contains(block.getType())
-					&& !sign.onBlockInteract(block, event.getPlayer(), ess))
+				if (sign.getBlocks().contains(block.getType()) && !sign.onBlockInteract(block, event.getPlayer(), ess))
 				{
 					event.setCancelled(true);
 					return;

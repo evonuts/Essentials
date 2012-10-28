@@ -39,10 +39,11 @@ public class Kit
 
 	public static void checkTime(final User user, final String kitName, final Map<String, Object> els) throws NoChargeException
 	{
-		if (user.isAuthorized("essentials.kit.exemptdelay")) {
+		if (user.isAuthorized("essentials.kit.exemptdelay"))
+		{
 			return;
 		}
-		
+
 		final Calendar time = new GregorianCalendar();
 
 		// Take the current time, and remove the delay from it.
@@ -82,7 +83,7 @@ public class Kit
 		{
 			throw new Exception(_("kitError2"));
 		}
-	
+
 
 		try
 		{
@@ -146,7 +147,8 @@ public class Kit
 				final Map<Integer, ItemStack> overfilled;
 				if (user.isAuthorized("essentials.oversizedstacks"))
 				{
-					overfilled = InventoryWorkaround.addItem(user.getInventory(), true, ess.getSettings().getOversizedStackSize(), stack);
+					overfilled = InventoryWorkaround.addItem(
+							user.getInventory(), true, ess.getSettings().getOversizedStackSize(), stack);
 				}
 				else
 				{

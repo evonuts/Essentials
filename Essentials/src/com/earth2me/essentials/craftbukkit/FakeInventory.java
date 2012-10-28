@@ -153,7 +153,8 @@ public class FakeInventory implements Inventory
 	{
 		for (int i = 0; i < items.length; i++)
 		{
-			if (items[i] == null || items[i].getTypeId() == 0) {
+			if (items[i] == null || items[i].getTypeId() == 0)
+			{
 				return i;
 			}
 		}

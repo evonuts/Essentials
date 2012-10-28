@@ -31,7 +31,8 @@ public class Commandsell extends EssentialsCommand
 		{
 			is = user.getItemInHand();
 		}
-		else if (args[0].equalsIgnoreCase("inventory") || args[0].equalsIgnoreCase("invent") || args[0].equalsIgnoreCase("all"))
+		else if (args[0].equalsIgnoreCase("inventory") || args[0].equalsIgnoreCase(
+				"invent") || args[0].equalsIgnoreCase("all"))
 		{
 			for (ItemStack stack : user.getInventory().getContents())
 			{
@@ -158,10 +159,18 @@ public class Commandsell extends EssentialsCommand
 		ris.setAmount(amount);
 		InventoryWorkaround.removeItem(user.getInventory(), true, true, ris);
 		user.updateInventory();
-		Trade.log("Command", "Sell", "Item", user.getName(), new Trade(ris, ess), user.getName(), new Trade(worth * amount, ess), user.getLocation(), ess);
+		Trade.log(
+				"Command", "Sell", "Item", user.getName(), new Trade(ris, ess), user.getName(),
+				new Trade(worth * amount, ess), user.getLocation(), ess);
 		user.giveMoney(worth * amount);
-		user.sendMessage(_("itemSold", Util.displayCurrency(worth * amount, ess), amount, is.getType().toString().toLowerCase(Locale.ENGLISH), Util.displayCurrency(worth, ess)));
-		logger.log(Level.INFO, _("itemSoldConsole", user.getDisplayName(), is.getType().toString().toLowerCase(Locale.ENGLISH), Util.displayCurrency(worth * amount, ess), amount, Util.displayCurrency(worth, ess)));
+		user.sendMessage(
+				_(
+						"itemSold", Util.displayCurrency(worth * amount, ess), amount,
+						is.getType().toString().toLowerCase(Locale.ENGLISH), Util.displayCurrency(worth, ess)));
+		logger.log(
+				Level.INFO, _(
+				"itemSoldConsole", user.getDisplayName(), is.getType().toString().toLowerCase(Locale.ENGLISH),
+				Util.displayCurrency(worth * amount, ess), amount, Util.displayCurrency(worth, ess)));
 
 	}
 }

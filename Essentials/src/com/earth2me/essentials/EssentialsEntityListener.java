@@ -38,8 +38,8 @@ public class EssentialsEntityListener implements Listener
 			final User defender = ess.getUser(eDefend);
 			final User attacker = ess.getUser(eAttack);
 
-			if (ess.getSettings().getLoginAttackDelay() > 0 && !attacker.isAuthorized("essentials.pvpdelay.exempt")
-				&& (System.currentTimeMillis() < (attacker.getLastLogin() + ess.getSettings().getLoginAttackDelay())))
+			if (ess.getSettings().getLoginAttackDelay() > 0 && !attacker.isAuthorized(
+					"essentials.pvpdelay.exempt") && (System.currentTimeMillis() < (attacker.getLastLogin() + ess.getSettings().getLoginAttackDelay())))
 			{
 				event.setCancelled(true);
 			}
@@ -73,9 +73,14 @@ public class EssentialsEntityListener implements Listener
 									@Override
 									public void run()
 									{
-										attacker.getServer().dispatchCommand(attacker.getBase(), command.replaceAll("\\{player\\}", defender.getName()));
-										LOGGER.log(Level.INFO, String.format("[PT] %s issued server command: /%s", attacker.getName(), command));
+										attacker.getServer().dispatchCommand(
+												attacker.getBase(), command.replaceAll(
+												"\\{player\\}", defender.getName()));
+										LOGGER.log(
+												Level.INFO, String.format(
+												"[PT] %s issued server command: /%s", attacker.getName(), command));
 									}
+
 								});
 
 						event.setCancelled(true);
@@ -162,8 +167,8 @@ public class EssentialsEntityListener implements Listener
 	@EventHandler(priority = EventPriority.LOW, ignoreCancelled = true)
 	public void onEntityRegainHealth(final EntityRegainHealthEvent event)
 	{
-		if (event.getRegainReason() == RegainReason.SATIATED && event.getEntity() instanceof Player
-			&& ess.getUser(event.getEntity()).isAfk() && ess.getSettings().getFreezeAfkPlayers())
+		if (event.getRegainReason() == RegainReason.SATIATED && event.getEntity() instanceof Player && ess.getUser(
+				event.getEntity()).isAfk() && ess.getSettings().getFreezeAfkPlayers())
 		{
 			event.setCancelled(true);
 		}
@@ -180,4 +185,5 @@ public class EssentialsEntityListener implements Listener
 			}
 		}
 	}
+
 }

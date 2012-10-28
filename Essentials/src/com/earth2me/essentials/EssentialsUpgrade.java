@@ -64,7 +64,8 @@ public class EssentialsUpgrade
 			}
 			if (found)
 			{
-				removeLinesFromConfig(configFile, "\\s*#?\\s*worth-[0-9]+.*", "# Worth values have been moved to worth.yml");
+				removeLinesFromConfig(
+						configFile, "\\s*#?\\s*worth-[0-9]+.*", "# Worth values have been moved to worth.yml");
 			}
 			doneFile.setProperty("moveWorthValuesToWorthYml", true);
 			doneFile.save();
@@ -163,7 +164,10 @@ public class EssentialsUpgrade
 		bWriter.close();
 		if (needUpdate)
 		{
-			if (!file.renameTo(new File(file.getParentFile(), file.getName().concat("." + System.currentTimeMillis() + ".upgradebackup"))))
+			if (!file.renameTo(
+					new File(
+							file.getParentFile(),
+							file.getName().concat("." + System.currentTimeMillis() + ".upgradebackup"))))
 			{
 				throw new Exception(_("configFileMoveError"));
 			}
@@ -217,11 +221,8 @@ public class EssentialsUpgrade
 					if (world != null)
 					{
 						final Location loc = new Location(
-								world,
-								((Number)vals.get(0)).doubleValue(),
-								((Number)vals.get(1)).doubleValue(),
-								((Number)vals.get(2)).doubleValue(),
-								((Number)vals.get(3)).floatValue(),
+								world, ((Number)vals.get(0)).doubleValue(), ((Number)vals.get(1)).doubleValue(),
+								((Number)vals.get(2)).doubleValue(), ((Number)vals.get(3)).floatValue(),
 								((Number)vals.get(4)).floatValue());
 
 						final String worldName = world.getName().toLowerCase(Locale.ENGLISH);
@@ -271,7 +272,8 @@ public class EssentialsUpgrade
 				if (config.hasProperty("powertools"))
 				{
 					@SuppressWarnings("unchecked")
-					final Map<String, Object> powertools = config.getConfigurationSection("powertools").getValues(false);
+					final Map<String, Object> powertools = config.getConfigurationSection("powertools").getValues(
+							false);
 					if (powertools == null)
 					{
 						continue;
@@ -407,12 +409,11 @@ public class EssentialsUpgrade
 					}
 					if (world != null)
 					{
-						user.setHome("home", new Location(world,
-														  ((Number)vals.get(0)).doubleValue(),
-														  ((Number)vals.get(1)).doubleValue(),
-														  ((Number)vals.get(2)).doubleValue(),
-														  ((Number)vals.get(3)).floatValue(),
-														  ((Number)vals.get(4)).floatValue()));
+						user.setHome(
+								"home", new Location(
+								world, ((Number)vals.get(0)).doubleValue(), ((Number)vals.get(1)).doubleValue(),
+								((Number)vals.get(2)).doubleValue(), ((Number)vals.get(3)).floatValue(),
+								((Number)vals.get(4)).floatValue()));
 					}
 				}
 			}
@@ -580,7 +581,8 @@ public class EssentialsUpgrade
 			{
 				continue;
 			}
-			final String sanitizedFilename = Util.sanitizeFileName(filename.substring(0, filename.length() - 4)) + ".yml";
+			final String sanitizedFilename = Util.sanitizeFileName(
+					filename.substring(0, filename.length() - 4)) + ".yml";
 			if (sanitizedFilename.equals(filename))
 			{
 				continue;
@@ -629,12 +631,12 @@ public class EssentialsUpgrade
 		{
 			return null;
 		}
-		return new Location(world,
-							config.getDouble((path != null ? path + "." : "") + "x", 0),
-							config.getDouble((path != null ? path + "." : "") + "y", 0),
-							config.getDouble((path != null ? path + "." : "") + "z", 0),
-							(float)config.getDouble((path != null ? path + "." : "") + "yaw", 0),
-							(float)config.getDouble((path != null ? path + "." : "") + "pitch", 0));
+		return new Location(
+				world, config.getDouble((path != null ? path + "." : "") + "x", 0),
+				config.getDouble((path != null ? path + "." : "") + "y", 0),
+				config.getDouble((path != null ? path + "." : "") + "z", 0),
+				(float)config.getDouble((path != null ? path + "." : "") + "yaw", 0),
+				(float)config.getDouble((path != null ? path + "." : "") + "pitch", 0));
 	}
 
 	private void deleteOldItemsCsv()

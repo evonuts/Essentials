@@ -13,7 +13,7 @@ public class Commandenderchest extends EssentialsCommand
 
 	@Override
 	protected void run(final Server server, final User user, final String commandLabel, final String[] args) throws Exception
-	{		
+	{
 		if (args.length > 0 && user.isAuthorized("essentials.enderchest.others"))
 		{
 			final User invUser = getPlayer(server, args, 0);

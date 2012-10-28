@@ -43,11 +43,13 @@ public class Teleport implements Runnable, ITeleport
 			return location;
 		}
 	}
+
+
 	private IUser user;
 	private IUser teleportUser;
 	private int teleTimer = -1;
-	private long started;	// time this task was initiated
-	private long tpdelay;		// how long to delay the teleport
+	private long started;    // time this task was initiated
+	private long tpdelay;        // how long to delay the teleport
 	private int health;
 	// note that I initially stored a clone of the location for reference, but...
 	// when comparing locations, I got incorrect mismatches (rounding errors, looked like)
@@ -95,11 +97,10 @@ public class Teleport implements Runnable, ITeleport
 			return;
 		}
 
-		if (!user.isAuthorized("essentials.teleport.timer.move")
-			&& (Math.round(teleportUser.getLocation().getX() * MOVE_CONSTANT) != initX
-				|| Math.round(teleportUser.getLocation().getY() * MOVE_CONSTANT) != initY
-				|| Math.round(teleportUser.getLocation().getZ() * MOVE_CONSTANT) != initZ
-				|| teleportUser.getHealth() < health))
+		if (!user.isAuthorized("essentials.teleport.timer.move") && (Math.round(
+				teleportUser.getLocation().getX() * MOVE_CONSTANT) != initX || Math.round(
+				teleportUser.getLocation().getY() * MOVE_CONSTANT) != initY || Math.round(
+				teleportUser.getLocation().getZ() * MOVE_CONSTANT) != initZ || teleportUser.getHealth() < health))
 		{
 			// user moved, cancel teleport
 			cancel(true);
@@ -241,7 +242,7 @@ public class Teleport implements Runnable, ITeleport
 	{
 		teleport(loc, chargeFor, TeleportCause.PLUGIN);
 	}
-		
+
 	public void teleport(Location loc, Trade chargeFor, TeleportCause cause) throws Exception
 	{
 		teleport(new Target(loc), chargeFor, cause);
@@ -322,7 +323,8 @@ public class Teleport implements Runnable, ITeleport
 	{
 		final Player player = user.getBase();
 		final Location bed = player.getBedSpawnLocation();
-		final PlayerRespawnEvent pre = new PlayerRespawnEvent(player, bed == null ? player.getWorld().getSpawnLocation() : bed, bed != null);
+		final PlayerRespawnEvent pre = new PlayerRespawnEvent(
+				player, bed == null ? player.getWorld().getSpawnLocation() : bed, bed != null);
 		ess.getServer().getPluginManager().callEvent(pre);
 		teleport(new Target(pre.getRespawnLocation()), chargeFor, cause);
 	}
@@ -332,7 +334,7 @@ public class Teleport implements Runnable, ITeleport
 	{
 		Location loc = ess.getWarps().getWarp(warp);
 		user.sendMessage(_("warpingTo", warp));
-		teleport(new Target(loc), chargeFor, cause);		
+		teleport(new Target(loc), chargeFor, cause);
 	}
 
 	//The back function is a wrapper used to teleport a player /back to their previous location.	

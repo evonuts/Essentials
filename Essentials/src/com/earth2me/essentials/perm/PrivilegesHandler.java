@@ -8,6 +8,7 @@ import net.krinsoft.privileges.Privileges;
 import net.krinsoft.privileges.groups.Group;
 import net.krinsoft.privileges.groups.GroupManager;
 
+
 public class PrivilegesHandler extends SuperpermsHandler
 {
 	private final transient Privileges plugin;
@@ -15,7 +16,7 @@ public class PrivilegesHandler extends SuperpermsHandler
 
 	public PrivilegesHandler(final Plugin plugin)
 	{
-		this.plugin = (Privileges) plugin;
+		this.plugin = (Privileges)plugin;
 		this.manager = this.plugin.getGroupManager();
 	}
 

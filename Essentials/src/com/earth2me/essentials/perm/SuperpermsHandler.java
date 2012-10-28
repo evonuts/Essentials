@@ -41,7 +41,7 @@ public class SuperpermsHandler implements IPermissionsHandler
 			{
 				return base.hasPermission(permCheck);
 			}
-		
+
 			index = node.lastIndexOf('.');
 			if (index < 1)
 			{

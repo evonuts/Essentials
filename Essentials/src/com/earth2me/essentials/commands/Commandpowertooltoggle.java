@@ -20,8 +20,7 @@ public class Commandpowertooltoggle extends EssentialsCommand
 			user.sendMessage(_("noPowerTools"));
 			return;
 		}
-		user.sendMessage(user.togglePowerToolsEnabled()
-						 ? _("powerToolsEnabled")
-						 : _("powerToolsDisabled"));
+		user.sendMessage(
+				user.togglePowerToolsEnabled() ? _("powerToolsEnabled") : _("powerToolsDisabled"));
 	}
 }

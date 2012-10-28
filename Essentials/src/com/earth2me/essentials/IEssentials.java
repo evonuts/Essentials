@@ -63,12 +63,12 @@ public interface IEssentials extends Plugin
 	ItemDb getItemDb();
 
 	UserMap getUserMap();
-	
+
 	Metrics getMetrics();
-	
+
 	void setMetrics(Metrics metrics);
-	
+
 	EssentialsTimer getTimer();
-	
+
 	List<String> getVanishedPlayers();
 }

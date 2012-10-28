@@ -26,7 +26,7 @@ public interface IUser extends Player
 	void takeMoney(double value);
 
 	void giveMoney(double value);
-	
+
 	boolean canAfford(double value);
 
 	String getGroup();

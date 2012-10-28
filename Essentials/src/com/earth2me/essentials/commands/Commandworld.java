@@ -54,7 +54,8 @@ public class Commandworld extends EssentialsCommand
 			}
 		}
 
-		if (ess.getSettings().isWorldTeleportPermissions() && !user.isAuthorized("essentials.worlds." + world.getName()))
+		if (ess.getSettings().isWorldTeleportPermissions() && !user.isAuthorized(
+				"essentials.worlds." + world.getName()))
 		{
 			throw new Exception(_("noPerm", "essentials.worlds." + world.getName()));
 		}
@@ -74,7 +75,8 @@ public class Commandworld extends EssentialsCommand
 		}
 
 		final Location loc = user.getLocation();
-		final Location target = new Location(world, loc.getBlockX() * factor + .5, loc.getBlockY(), loc.getBlockZ() * factor + .5);
+		final Location target = new Location(
+				world, loc.getBlockX() * factor + .5, loc.getBlockY(), loc.getBlockZ() * factor + .5);
 
 		final Trade charge = new Trade(this.getName(), ess);
 		charge.isAffordableFor(user);

@@ -12,7 +12,8 @@ import org.yaml.snakeyaml.constructor.Constructor;
 
 public class YamlStorageReader implements IStorageReader
 {
-	private transient static final Map<Class, Yaml> PREPARED_YAMLS = Collections.synchronizedMap(new HashMap<Class, Yaml>());
+	private transient static final Map<Class, Yaml> PREPARED_YAMLS = Collections.synchronizedMap(
+			new HashMap<Class, Yaml>());
 	private transient static final Map<Class, ReentrantLock> LOCKS = new HashMap<Class, ReentrantLock>();
 	private transient final Reader reader;
 	private transient final Plugin plugin;
@@ -45,7 +46,8 @@ public class YamlStorageReader implements IStorageReader
 		try
 		{
 			T object = (T)yaml.load(reader);
-			if (object == null) {
+			if (object == null)
+			{
 				object = clazz.newInstance();
 			}
 			return object;
@@ -77,8 +79,7 @@ public class YamlStorageReader implements IStorageReader
 		{
 			prepareList(field, description, classes, constructor);
 			prepareMap(field, description, classes, constructor);
-			if (StorageObject.class.isAssignableFrom(field.getType())
-				&& !classes.contains(field.getType()))
+			if (StorageObject.class.isAssignableFrom(field.getType()) && !classes.contains(field.getType()))
 			{
 				prepareConstructor(constructor, classes, field.getType());
 			}
@@ -92,8 +93,7 @@ public class YamlStorageReader implements IStorageReader
 		if (listType != null)
 		{
 			description.putListPropertyType(field.getName(), listType.value());
-			if (StorageObject.class.isAssignableFrom(listType.value())
-				&& !classes.contains(listType.value()))
+			if (StorageObject.class.isAssignableFrom(listType.value()) && !classes.contains(listType.value()))
 			{
 				prepareConstructor(constructor, classes, listType.value());
 			}
@@ -106,11 +106,9 @@ public class YamlStorageReader implements IStorageReader
 		if (mapType != null)
 		{
 			final MapKeyType mapKeyType = field.getAnnotation(MapKeyType.class);
-			description.putMapPropertyType(field.getName(),
-										   mapKeyType == null ? String.class : mapKeyType.value(),
-										   mapType.value());
-			if (StorageObject.class.isAssignableFrom(mapType.value())
-				&& !classes.contains(mapType.value()))
+			description.putMapPropertyType(
+					field.getName(), mapKeyType == null ? String.class : mapKeyType.value(), mapType.value());
+			if (StorageObject.class.isAssignableFrom(mapType.value()) && !classes.contains(mapType.value()))
 			{
 				prepareConstructor(constructor, classes, mapType.value());
 			}

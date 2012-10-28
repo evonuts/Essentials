@@ -37,8 +37,7 @@ public class Commandban extends EssentialsCommand
 		}
 		if (!user.isOnline())
 		{
-			if (sender instanceof Player
-				&& !ess.getUser(sender).isAuthorized("essentials.ban.offline"))
+			if (sender instanceof Player && !ess.getUser(sender).isAuthorized("essentials.ban.offline"))
 			{
 				sender.sendMessage(_("banExempt"));
 				return;
@@ -67,10 +66,11 @@ public class Commandban extends EssentialsCommand
 		user.setBanReason(banReason);
 		user.setBanned(true);
 		user.kickPlayer(banReason);
-		
+
 		server.getLogger().log(Level.INFO, _("playerBanned", senderName, user.getName(), banReason));
-		
-		if (nomatch) {
+
+		if (nomatch)
+		{
 			sender.sendMessage(_("userUnknown", user.getName()));
 		}
 

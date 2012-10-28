@@ -30,8 +30,8 @@ public class Commandtp extends EssentialsCommand
 			{
 				throw new Exception(_("teleportDisabled", player.getDisplayName()));
 			}
-			if (user.getWorld() != player.getWorld() && ess.getSettings().isWorldTeleportPermissions()
-				&& !user.isAuthorized("essentials.worlds." + player.getWorld().getName()))
+			if (user.getWorld() != player.getWorld() && ess.getSettings().isWorldTeleportPermissions() && !user.isAuthorized(
+					"essentials.worlds." + player.getWorld().getName()))
 			{
 				throw new Exception(_("noPerm", "essentials.worlds." + player.getWorld().getName()));
 			}
@@ -57,8 +57,8 @@ public class Commandtp extends EssentialsCommand
 			{
 				throw new Exception(_("teleportDisabled", toPlayer.getDisplayName()));
 			}
-			if (target.getWorld() != toPlayer.getWorld() && ess.getSettings().isWorldTeleportPermissions()
-				&& !user.isAuthorized("essentials.worlds." + toPlayer.getWorld().getName()))
+			if (target.getWorld() != toPlayer.getWorld() && ess.getSettings().isWorldTeleportPermissions() && !user.isAuthorized(
+					"essentials.worlds." + toPlayer.getWorld().getName()))
 			{
 				throw new Exception(_("noPerm", "essentials.worlds." + toPlayer.getWorld().getName()));
 			}

@@ -70,7 +70,8 @@ public class Commandgod extends EssentialsCommand
 			}
 
 			player.sendMessage(_("godMode", (enabled ? _("enabled") : _("disabled"))));
-			sender.sendMessage(_("godMode", _(enabled ? "godEnabledFor" : "godDisabledFor", matchPlayer.getDisplayName())));
+			sender.sendMessage(
+					_("godMode", _(enabled ? "godEnabledFor" : "godDisabledFor", matchPlayer.getDisplayName())));
 		}
 	}
 }

@@ -194,7 +194,8 @@ public class Metrics
 			}
 
 			// Begin hitting the server with glorious data
-			taskId = plugin.getServer().getScheduler().scheduleAsyncRepeatingTask(plugin, new Runnable()
+			taskId = plugin.getServer().getScheduler().scheduleAsyncRepeatingTask(
+					plugin, new Runnable()
 			{
 				private boolean firstPost = true;
 
@@ -352,7 +353,9 @@ public class Metrics
 					// The key name to send to the metrics server
 					// The format is C-GRAPHNAME-PLOTTERNAME where separator - is defined at the top
 					// Legacy (R4) submitters use the format Custom%s, or CustomPLOTTERNAME
-					final String key = String.format("C%s%s%s%s", CUSTOM_DATA_SEPARATOR, graph.getName(), CUSTOM_DATA_SEPARATOR, plotter.getColumnName());
+					final String key = String.format(
+							"C%s%s%s%s", CUSTOM_DATA_SEPARATOR, graph.getName(), CUSTOM_DATA_SEPARATOR,
+							plotter.getColumnName());
 
 					// The value to send, which for the foreseeable future is just the string
 					// value of plotter.getValue()

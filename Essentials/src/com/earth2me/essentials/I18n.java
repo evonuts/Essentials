@@ -28,7 +28,8 @@ public class I18n implements II18n
 	public I18n(final IEssentials ess)
 	{
 		this.ess = ess;
-		customBundle = ResourceBundle.getBundle(MESSAGES, defaultLocale, new FileResClassLoader(I18n.class.getClassLoader(), ess));
+		customBundle = ResourceBundle.getBundle(
+				MESSAGES, defaultLocale, new FileResClassLoader(I18n.class.getClassLoader(), ess));
 		localeBundle = ResourceBundle.getBundle(MESSAGES, defaultLocale);
 		defaultBundle = ResourceBundle.getBundle(MESSAGES, Locale.ENGLISH);
 	}
@@ -63,7 +64,10 @@ public class I18n implements II18n
 		}
 		catch (MissingResourceException ex)
 		{
-			Logger.getLogger("Minecraft").log(Level.WARNING, String.format("Missing translation key \"%s\" in translation file %s", ex.getKey(), localeBundle.getLocale().toString()), ex);
+			Logger.getLogger("Minecraft").log(
+					Level.WARNING, String.format(
+					"Missing translation key \"%s\" in translation file %s", ex.getKey(),
+					localeBundle.getLocale().toString()), ex);
 			return defaultBundle.getString(string);
 		}
 	}
@@ -126,16 +130,15 @@ public class I18n implements II18n
 		}
 		ResourceBundle.clearCache();
 		Logger.getLogger("Minecraft").log(Level.INFO, String.format("Using locale %s", currentLocale.toString()));
-		customBundle = ResourceBundle.getBundle(MESSAGES, currentLocale, new FileResClassLoader(I18n.class.getClassLoader(), ess));
+		customBundle = ResourceBundle.getBundle(
+				MESSAGES, currentLocale, new FileResClassLoader(I18n.class.getClassLoader(), ess));
 		localeBundle = ResourceBundle.getBundle(MESSAGES, currentLocale);
 	}
 
 	public static String capitalCase(final String input)
 	{
-		return input == null || input.length() == 0
-			   ? input
-			   : input.toUpperCase(Locale.ENGLISH).charAt(0)
-				 + input.toLowerCase(Locale.ENGLISH).substring(1);
+		return input == null || input.length() == 0 ? input : input.toUpperCase(Locale.ENGLISH).charAt(
+				0) + input.toLowerCase(Locale.ENGLISH).substring(1);
 	}
 
 

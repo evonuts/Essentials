@@ -19,6 +19,7 @@ public class Commandbalancetop extends EssentialsCommand
 	{
 		super("balancetop");
 	}
+
 	private static final int CACHETIME = 2 * 60 * 1000;
 	public static final int MINUSERS = 50;
 	private static ArrayListInput cache = new ArrayListInput();
@@ -105,7 +106,7 @@ public class Commandbalancetop extends EssentialsCommand
 			{
 				if (force || cacheage <= System.currentTimeMillis() - CACHETIME)
 				{
-					cache.getLines().clear();					
+					cache.getLines().clear();
 					final Map<String, Double> balances = new HashMap<String, Double>();
 					double totalMoney = 0d;
 					for (String u : ess.getUserMap().getAllUniqueUsers())
@@ -120,8 +121,10 @@ public class Commandbalancetop extends EssentialsCommand
 						}
 					}
 
-					final List<Map.Entry<String, Double>> sortedEntries = new ArrayList<Map.Entry<String, Double>>(balances.entrySet());
-					Collections.sort(sortedEntries, new Comparator<Map.Entry<String, Double>>()
+					final List<Map.Entry<String, Double>> sortedEntries = new ArrayList<Map.Entry<String, Double>>(
+							balances.entrySet());
+					Collections.sort(
+							sortedEntries, new Comparator<Map.Entry<String, Double>>()
 					{
 						@Override
 						public int compare(final Entry<String, Double> entry1, final Entry<String, Double> entry2)
@@ -129,12 +132,13 @@ public class Commandbalancetop extends EssentialsCommand
 							return -entry1.getValue().compareTo(entry2.getValue());
 						}
 					});
-					
+
 					cache.getLines().add(_("serverTotal", Util.displayCurrency(totalMoney, ess)));
 					int pos = 1;
 					for (Map.Entry<String, Double> entry : sortedEntries)
 					{
-						cache.getLines().add(pos + ". " + entry.getKey() + ", " + Util.displayCurrency(entry.getValue(), ess));
+						cache.getLines().add(
+								pos + ". " + entry.getKey() + ", " + Util.displayCurrency(entry.getValue(), ess));
 						pos++;
 					}
 					cacheage = System.currentTimeMillis();

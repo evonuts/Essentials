@@ -30,8 +30,8 @@ public class Commandtpohere extends EssentialsCommand
 			throw new NoSuchFieldException(_("playerNotFound"));
 		}
 
-		if (user.getWorld() != player.getWorld() && ess.getSettings().isWorldTeleportPermissions()
-			&& !user.isAuthorized("essentials.worlds." + user.getWorld().getName()))
+		if (user.getWorld() != player.getWorld() && ess.getSettings().isWorldTeleportPermissions() && !user.isAuthorized(
+				"essentials.worlds." + user.getWorld().getName()))
 		{
 			throw new Exception(_("noPerm", "essentials.worlds." + user.getWorld().getName()));
 		}

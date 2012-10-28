@@ -21,11 +21,11 @@ public class Commandmsg extends EssentialsCommand
 	@Override
 	public void run(Server server, CommandSender sender, String commandLabel, String[] args) throws Exception
 	{
-		if (args.length < 2 || args[0].trim().length() < 2  || args[1].trim().isEmpty())
+		if (args.length < 2 || args[0].trim().length() < 2 || args[1].trim().isEmpty())
 		{
 			throw new NotEnoughArgumentsException();
 		}
-	
+
 		String message = getFinalArg(args, 1);
 		if (sender instanceof Player)
 		{
@@ -81,7 +81,8 @@ public class Commandmsg extends EssentialsCommand
 		{
 			sender.sendMessage(_("msgFormat", translatedMe, matchedPlayer.getDisplayName(), message));
 			final User matchedUser = ess.getUser(matchedPlayer);
-			if (sender instanceof Player && (matchedUser.isIgnoredPlayer(ess.getUser(sender)) || matchedUser.isHidden()))
+			if (sender instanceof Player && (matchedUser.isIgnoredPlayer(
+					ess.getUser(sender)) || matchedUser.isHidden()))
 			{
 				continue;
 			}

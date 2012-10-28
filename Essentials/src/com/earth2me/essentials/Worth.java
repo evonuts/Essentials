@@ -42,12 +42,15 @@ public class Worth implements IConf
 	{
 		if (itemStack.getType().getData() == null)
 		{
-			config.setProperty("worth." + itemStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", ""), price);
+			config.setProperty(
+					"worth." + itemStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", ""), price);
 		}
 		else
 		{
 			// Bukkit-bug: getDurability still contains the correct value, while getData().getData() is 0.
-			config.setProperty("worth." + itemStack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", "") + "." + itemStack.getDurability(), price);
+			config.setProperty(
+					"worth." + itemStack.getType().toString().toLowerCase(Locale.ENGLISH).replace(
+							"_", "") + "." + itemStack.getDurability(), price);
 		}
 		config.removeProperty("worth-" + itemStack.getTypeId());
 		config.save();

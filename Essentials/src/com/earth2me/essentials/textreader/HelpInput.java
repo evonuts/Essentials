@@ -52,9 +52,10 @@ public class HelpInput implements IText
 				{
 					try
 					{
-						if (!match.equalsIgnoreCase("") && (!pluginNameLow.contains(match)) && (!k.getKey().toLowerCase(Locale.ENGLISH).contains(match))
-							&& (!(k.getValue().get(DESCRIPTION) instanceof String
-								  && ((String)k.getValue().get(DESCRIPTION)).toLowerCase(Locale.ENGLISH).contains(match))))
+						if (!match.equalsIgnoreCase("") && (!pluginNameLow.contains(match)) && (!k.getKey().toLowerCase(
+								Locale.ENGLISH).contains(match)) && (!(k.getValue().get(
+								DESCRIPTION) instanceof String && ((String)k.getValue().get(DESCRIPTION)).toLowerCase(
+								Locale.ENGLISH).contains(match))))
 						{
 							continue;
 						}

@@ -67,6 +67,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		kitTimestamps = _getKitTimestamps();
 		nickname = _getNickname();
 	}
+
 	private double money;
 
 	private double _getMoney()
@@ -98,6 +99,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("money", value);
 		config.save();
 	}
+
 	private Map<String, Object> homes;
 
 	private Map<String, Object> _getHomes()
@@ -123,11 +125,11 @@ public abstract class UserData extends PlayerExtension implements IConf
 		}
 		return search;
 	}
-		
+
 	public Location getHome(String name) throws Exception
 	{
 		String search = getHomeName(name);
-		return config.getLocation("homes." + search, getServer());	
+		return config.getLocation("homes." + search, getServer());
 	}
 
 	public Location getHome(final Location world)
@@ -194,6 +196,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		}
 		return false;
 	}
+
 	private String nickname;
 
 	public String _getNickname()
@@ -212,6 +215,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("nickname", nick);
 		config.save();
 	}
+
 	private List<Integer> unlimited;
 
 	private List<Integer> _getUnlimited()
@@ -242,6 +246,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("unlimited", unlimited);
 		config.save();
 	}
+
 	private Map<String, Object> powertools;
 
 	private Map<String, Object> _getPowertools()
@@ -290,6 +295,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 	{
 		return !powertools.isEmpty();
 	}
+
 	private Location lastLocation;
 
 	private Location _getLastLocation()
@@ -319,6 +325,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("lastlocation", loc);
 		config.save();
 	}
+
 	private long lastTeleportTimestamp;
 
 	private long _getLastTeleportTimestamp()
@@ -337,6 +344,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("timestamps.lastteleport", time);
 		config.save();
 	}
+
 	private long lastHealTimestamp;
 
 	private long _getLastHealTimestamp()
@@ -355,6 +363,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("timestamps.lastheal", time);
 		config.save();
 	}
+
 	private String jail;
 
 	private String _getJail()
@@ -381,6 +390,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		}
 		config.save();
 	}
+
 	private List<String> mails;
 
 	private List<String> _getMails()
@@ -413,6 +423,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		mails.add(mail);
 		setMails(mails);
 	}
+
 	private boolean teleportEnabled;
 
 	private boolean getTeleportEnabled()
@@ -445,6 +456,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		setSocialSpyEnabled(ret);
 		return ret;
 	}
+
 	private List<String> ignoredPlayers;
 
 	public List<String> getIgnoredPlayers()
@@ -480,7 +492,8 @@ public abstract class UserData extends PlayerExtension implements IConf
 
 	public boolean isIgnoredPlayer(IUser user)
 	{
-		return (ignoredPlayers.contains(user.getName().toLowerCase(Locale.ENGLISH)) && !user.isAuthorized("essentials.chat.ignoreexempt"));
+		return (ignoredPlayers.contains(user.getName().toLowerCase(Locale.ENGLISH)) && !user.isAuthorized(
+				"essentials.chat.ignoreexempt"));
 	}
 
 	public void setIgnoredPlayer(IUser user, boolean set)
@@ -495,6 +508,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		}
 		setIgnoredPlayers(ignoredPlayers);
 	}
+
 	private boolean godmode;
 
 	private boolean _getGodModeEnabled()
@@ -513,6 +527,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("godmode", set);
 		config.save();
 	}
+
 	private boolean muted;
 
 	public boolean getMuted()
@@ -531,6 +546,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("muted", set);
 		config.save();
 	}
+
 	private long muteTimeout;
 
 	private long _getMuteTimeout()
@@ -549,6 +565,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("timestamps.mute", time);
 		config.save();
 	}
+
 	private boolean jailed;
 
 	private boolean getJailed()
@@ -574,6 +591,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		setJailed(ret);
 		return ret;
 	}
+
 	private long jailTimeout;
 
 	private long _getJailTimeout()
@@ -614,6 +632,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("ban.timeout", time);
 		config.save();
 	}
+
 	private long lastLogin;
 
 	private long _getLastLogin()
@@ -641,6 +660,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		}
 		config.save();
 	}
+
 	private long lastLogout;
 
 	private long _getLastLogout()
@@ -659,6 +679,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("timestamps.logout", time);
 		config.save();
 	}
+
 	private String lastLoginAddress;
 
 	private String _getLastLoginAddress()
@@ -676,6 +697,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		lastLoginAddress = address;
 		config.setProperty("ipAddress", address);
 	}
+
 	private boolean afk;
 
 	private boolean getAfk()
@@ -701,6 +723,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		setAfk(ret);
 		return ret;
 	}
+
 	private boolean newplayer;
 	private String geolocation;
 
@@ -728,6 +751,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		}
 		config.save();
 	}
+
 	private boolean isSocialSpyEnabled;
 
 	private boolean _isSocialSpyEnabled()
@@ -746,6 +770,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("socialspy", status);
 		config.save();
 	}
+
 	private boolean isNPC;
 
 	private boolean _isNPC()
@@ -764,6 +789,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 		config.setProperty("npc", set);
 		config.save();
 	}
+
 	private boolean arePowerToolsEnabled;
 
 	public boolean arePowerToolsEnabled()
@@ -789,6 +815,7 @@ public abstract class UserData extends PlayerExtension implements IConf
 	{
 		return config.getBoolean("powertoolsenabled", true);
 	}
+
 	private ConfigurationSection kitTimestamps;
 
 	private ConfigurationSection _getKitTimestamps()

@@ -122,7 +122,10 @@ public class Commandexp extends EssentialsCommand
 	private void showExp(final CommandSender sender, final User target)
 	{
 		final int totalExp = SetExpFix.getTotalExperience(target);
-		sender.sendMessage(_("exp", target.getDisplayName(), SetExpFix.getTotalExperience(target), target.getLevel(), SetExpFix.getExpUntilNextLevel(target)));
+		sender.sendMessage(
+				_(
+						"exp", target.getDisplayName(), SetExpFix.getTotalExperience(target), target.getLevel(),
+						SetExpFix.getExpUntilNextLevel(target)));
 	}
 
 	private void setExp(final CommandSender sender, final User target, String strAmount, final boolean give)
@@ -131,7 +134,7 @@ public class Commandexp extends EssentialsCommand
 		strAmount = strAmount.toLowerCase(Locale.ENGLISH);
 		if (strAmount.startsWith("l"))
 		{
-			strAmount = strAmount.substring(1);			
+			strAmount = strAmount.substring(1);
 			int neededLevel = Integer.parseInt(strAmount);
 			if (give)
 			{
@@ -140,7 +143,8 @@ public class Commandexp extends EssentialsCommand
 			amount = (long)SetExpFix.getExpToLevel(neededLevel);
 			SetExpFix.setTotalExperience(target, 0);
 		}
-		else {
+		else
+		{
 			amount = Long.parseLong(strAmount);
 		}
 

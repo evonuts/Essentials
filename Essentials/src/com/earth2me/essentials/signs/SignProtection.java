@@ -10,6 +10,7 @@ import org.bukkit.block.Sign;
 import org.bukkit.inventory.ItemStack;
 import com.earth2me.essentials.*;
 
+
 @Deprecated // This sign will be removed soon
 public class SignProtection extends EssentialsSign
 {
@@ -31,8 +32,8 @@ public class SignProtection extends EssentialsSign
 		if (hasAdjacentBlock(sign.getBlock()))
 		{
 			final SignProtectionState state = isBlockProtected(sign.getBlock(), player, username, true);
-			if (state == SignProtectionState.NOSIGN || state == SignProtectionState.OWNER
-				|| player.isAuthorized("essentials.signs.protection.override"))
+			if (state == SignProtectionState.NOSIGN || state == SignProtectionState.OWNER || player.isAuthorized(
+					"essentials.signs.protection.override"))
 			{
 				sign.setLine(3, "§1" + username);
 				return true;
@@ -164,15 +165,11 @@ public class SignProtection extends EssentialsSign
 
 	private Block[] getAdjacentBlocks(final Block block)
 	{
-		return new Block[]
-				{
-					block.getRelative(BlockFace.NORTH),
-					block.getRelative(BlockFace.SOUTH),
-					block.getRelative(BlockFace.EAST),
-					block.getRelative(BlockFace.WEST),
-					block.getRelative(BlockFace.DOWN),
-					block.getRelative(BlockFace.UP)
-				};
+		return new Block[]{
+				block.getRelative(BlockFace.NORTH), block.getRelative(BlockFace.SOUTH),
+				block.getRelative(BlockFace.EAST), block.getRelative(BlockFace.WEST), block.getRelative(BlockFace.DOWN),
+				block.getRelative(BlockFace.UP)
+		};
 	}
 
 	public SignProtectionState isBlockProtected(final Block block, final User user, final String username, boolean secure)
@@ -249,8 +246,8 @@ public class SignProtection extends EssentialsSign
 		{
 			final SignProtectionState state = isBlockProtected(adjBlock, player, username, true);
 
-			if ((state == SignProtectionState.ALLOWED || state == SignProtectionState.NOT_ALLOWED)
-				&& !player.isAuthorized("essentials.signs.protection.override"))
+			if ((state == SignProtectionState.ALLOWED || state == SignProtectionState.NOT_ALLOWED) && !player.isAuthorized(
+					"essentials.signs.protection.override"))
 			{
 				player.sendMessage(_("noPlacePermission", block.getType().toString().toLowerCase(Locale.ENGLISH)));
 				return false;
@@ -270,8 +267,7 @@ public class SignProtection extends EssentialsSign
 			return true;
 		}
 
-		if (state == SignProtectionState.NOT_ALLOWED
-			&& player.isAuthorized("essentials.signs.protection.override"))
+		if (state == SignProtectionState.NOT_ALLOWED && player.isAuthorized("essentials.signs.protection.override"))
 		{
 			return true;
 		}
@@ -292,8 +288,8 @@ public class SignProtection extends EssentialsSign
 			return true;
 		}
 
-		if ((state == SignProtectionState.ALLOWED || state == SignProtectionState.NOT_ALLOWED)
-			&& player.isAuthorized("essentials.signs.protection.override"))
+		if ((state == SignProtectionState.ALLOWED || state == SignProtectionState.NOT_ALLOWED) && player.isAuthorized(
+				"essentials.signs.protection.override"))
 		{
 			checkIfSignsAreBroken(block, player, username, ess);
 			return true;

@@ -79,11 +79,11 @@ public abstract class AsyncStorageObjectHolder<T extends StorageObject> implemen
 	{
 		new StorageObjectDataReader();
 	}
-	
+
 	public abstract void finishRead();
-	
+
 	public abstract void finishWrite();
-	
+
 	public abstract File getStorageFile();
 
 

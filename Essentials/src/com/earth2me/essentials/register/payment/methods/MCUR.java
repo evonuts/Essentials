@@ -104,9 +104,9 @@ public class MCUR implements Method
 	@Override
 	public boolean isCompatible(Plugin plugin)
 	{
-		return (plugin.getDescription().getName().equalsIgnoreCase("Currency")
-				|| plugin.getDescription().getName().equalsIgnoreCase("MultiCurrency"))
-			   && plugin instanceof Currency;
+		return (plugin.getDescription().getName().equalsIgnoreCase(
+				"Currency") || plugin.getDescription().getName().equalsIgnoreCase(
+				"MultiCurrency")) && plugin instanceof Currency;
 	}
 
 	@Override

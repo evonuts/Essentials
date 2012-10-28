@@ -14,6 +14,7 @@ import org.bukkit.entity.Player;
 import com.earth2me.essentials.User;
 import com.earth2me.essentials.metrics.Metrics;
 
+
 // This command has 4 undocumented behaviours #EasterEgg
 public class Commandessentials extends EssentialsCommand
 {
@@ -21,13 +22,15 @@ public class Commandessentials extends EssentialsCommand
 	{
 		super("essentials");
 	}
+
 	private transient int taskid;
 	private final transient Map<Player, Block> noteBlocks = new HashMap<Player, Block>();
 
 	@Override
 	public void run(final Server server, final CommandSender sender, final String commandLabel, final String[] args) throws Exception
 	{
-		if (args.length == 0) {
+		if (args.length == 0)
+		{
 			run_disabled(server, sender, commandLabel, args);
 		}
 		else if (args[0].equalsIgnoreCase("debug"))
@@ -50,31 +53,34 @@ public class Commandessentials extends EssentialsCommand
 		{
 			run_optout(server, sender, commandLabel, args);
 		}
-		else {
+		else
+		{
 			run_reload(server, sender, commandLabel, args);
 		}
 	}
-	
+
 	//If you do not supply an argument this command will list 'overridden' commands.
 	private void run_disabled(final Server server, final CommandSender sender, final String commandLabel, final String[] args) throws Exception
 	{
 		sender.sendMessage("Essentials " + ess.getDescription().getVersion());
 		sender.sendMessage("/<command> <reload/debug>");
-		
+
 		final StringBuilder disabledCommands = new StringBuilder();
 		for (Map.Entry<String, String> entry : ess.getAlternativeCommandsHandler().disabledCommands().entrySet())
 		{
-			if (disabledCommands.length() > 0) {
+			if (disabledCommands.length() > 0)
+			{
 				disabledCommands.append(", ");
 			}
 			disabledCommands.append(entry.getKey()).append(" => ").append(entry.getValue());
 		}
-		if (disabledCommands.length() > 0) {
+		if (disabledCommands.length() > 0)
+		{
 			sender.sendMessage(_("blockList"));
 			sender.sendMessage(disabledCommands.toString());
 		}
 	}
-	
+
 	private void run_reset(final Server server, final CommandSender sender, final String commandLabel, final String[] args) throws Exception
 	{
 		if (args.length < 2)
@@ -85,19 +91,20 @@ public class Commandessentials extends EssentialsCommand
 		user.reset();
 		sender.sendMessage("Reset Essentials userdata for player: " + user.getDisplayName());
 	}
-	
+
 	private void run_debug(final Server server, final CommandSender sender, final String commandLabel, final String[] args) throws Exception
 	{
 		ess.getSettings().setDebug(!ess.getSettings().isDebug());
-		sender.sendMessage("Essentials " + ess.getDescription().getVersion() + " debug mode " + (ess.getSettings().isDebug() ? "enabled" : "disabled"));
+		sender.sendMessage(
+				"Essentials " + ess.getDescription().getVersion() + " debug mode " + (ess.getSettings().isDebug() ? "enabled" : "disabled"));
 	}
-	
+
 	private void run_reload(final Server server, final CommandSender sender, final String commandLabel, final String[] args) throws Exception
 	{
 		ess.reload();
 		sender.sendMessage(_("essentialsReload", ess.getDescription().getVersion()));
 	}
-	
+
 	private void run_nya(final Server server, final CommandSender sender, final String commandLabel, final String[] args) throws Exception
 	{
 		final Map<String, Byte> noteMap = new HashMap<String, Byte>();
@@ -125,55 +132,56 @@ public class Commandessentials extends EssentialsCommand
 		noteMap.put("2D#", (byte)(0x9 + 0xC));
 		noteMap.put("2E", (byte)(0xA + 0xC));
 		noteMap.put("2F", (byte)(0xB + 0xC));
-			if (!noteBlocks.isEmpty())
+		if (!noteBlocks.isEmpty())
+		{
+			return;
+		}
+		final String tuneStr = "1D#,1E,2F#,,2A#,1E,1D#,1E,2F#,2B,2D#,2E,2D#,2A#,2B,,2F#,,1D#,1E,2F#,2B,2C#,2A#,2B,2C#,2E,2D#,2E,2C#,,2F#,,2G#,,1D,1D#,,1C#,1D,1C#,1B,,1B,,1C#,,1D,,1D,1C#,1B,1C#,1D#,2F#,2G#,1D#,2F#,1C#,1D#,1B,1C#,1B,1D#,,2F#,,2G#,1D#,2F#,1C#,1D#,1B,1D,1D#,1D,1C#,1B,1C#,1D,,1B,1C#,1D#,2F#,1C#,1D,1C#,1B,1C#,,1B,,1C#,,2F#,,2G#,,1D,1D#,,1C#,1D,1C#,1B,,1B,,1C#,,1D,,1D,1C#,1B,1C#,1D#,2F#,2G#,1D#,2F#,1C#,1D#,1B,1C#,1B,1D#,,2F#,,2G#,1D#,2F#,1C#,1D#,1B,1D,1D#,1D,1C#,1B,1C#,1D,,1B,1C#,1D#,2F#,1C#,1D,1C#,1B,1C#,,1B,,1B,,1B,,1F#,1G#,1B,,1F#,1G#,1B,1C#,1D#,1B,1E,1D#,1E,2F#,1B,,1B,,1F#,1G#,1B,1E,1D#,1C#,1B,,,,1F#,1B,,1F#,1G#,1B,,1F#,1G#,1B,1B,1C#,1D#,1B,1F#,1G#,1F#,1B,,1B,1A#,1B,1F#,1G#,1B,1E,1D#,1E,2F#,1B,,1A#,,1B,,1F#,1G#,1B,,1F#,1G#,1B,1C#,1D#,1B,1E,1D#,1E,2F#,1B,,1B,,1F#,1G#,1B,1F#,1E,1D#,1C#,1B,,,,1F#,1B,,1F#,1G#,1B,,1F#,1G#,1B,1B,1C#,1D#,1B,1F#,1G#,1F#,1B,,1B,1A#,1B,1F#,1G#,1B,1E,1D#,1E,2F#,1B,,1A#,,1B,,1F#,1G#,1B,,1F#,1G#,1B,1C#,1D#,1B,1E,1D#,1E,2F#,1B,,1B,,1F#,1G#,1B,1F#,1E,1D#,1C#,1B,,,,1F#,1B,,1F#,1G#,1B,,1F#,1G#,1B,1B,1C#,1D#,1B,1F#,1G#,1F#,1B,,1B,1A#,1B,1F#,1G#,1B,1E,1D#,1E,2F#,1B,,1A#,,1B,,1F#,1G#,1B,,1F#,1G#,1B,1C#,1D#,1B,1E,1D#,1E,2F#,1B,,1B,,1F#,1G#,1B,1F#,1E,1D#,1C#,1B,,,,1F#,1B,,1F#,1G#,1B,,1F#,1G#,1B,1B,1C#,1D#,1B,1F#,1G#,1F#,1B,,1B,1A#,1B,1F#,1G#,1B,1E,1D#,1E,2F#,1B,,1A#,,1B,,1F#,1G#,1B,,1F#,1G#,1B,1C#,1D#,1B,1E,1D#,1E,2F#,1B,,1B,,1F#,1G#,1B,1F#,1E,1D#,1C#,1B,,,,1F#,1B,,1F#,1G#,1B,,1F#,1G#,1B,1B,1C#,1D#,1B,1F#,1G#,1F#,1B,,1B,1A#,1B,1F#,1G#,1B,1E,1D#,1E,2F#,1B,,1B,,";
+		final String[] tune = tuneStr.split(",");
+		for (Player player : server.getOnlinePlayers())
+		{
+			final Location loc = player.getLocation();
+			loc.add(0, 3, 0);
+			while (loc.getBlockY() < player.getLocation().getBlockY() + 10 && loc.getBlock().getTypeId() != 0)
 			{
-				return;
+				loc.add(0, 1, 0);
 			}
-			final String tuneStr = "1D#,1E,2F#,,2A#,1E,1D#,1E,2F#,2B,2D#,2E,2D#,2A#,2B,,2F#,,1D#,1E,2F#,2B,2C#,2A#,2B,2C#,2E,2D#,2E,2C#,,2F#,,2G#,,1D,1D#,,1C#,1D,1C#,1B,,1B,,1C#,,1D,,1D,1C#,1B,1C#,1D#,2F#,2G#,1D#,2F#,1C#,1D#,1B,1C#,1B,1D#,,2F#,,2G#,1D#,2F#,1C#,1D#,1B,1D,1D#,1D,1C#,1B,1C#,1D,,1B,1C#,1D#,2F#,1C#,1D,1C#,1B,1C#,,1B,,1C#,,2F#,,2G#,,1D,1D#,,1C#,1D,1C#,1B,,1B,,1C#,,1D,,1D,1C#,1B,1C#,1D#,2F#,2G#,1D#,2F#,1C#,1D#,1B,1C#,1B,1D#,,2F#,,2G#,1D#,2F#,1C#,1D#,1B,1D,1D#,1D,1C#,1B,1C#,1D,,1B,1C#,1D#,2F#,1C#,1D,1C#,1B,1C#,,1B,,1B,,1B,,1F#,1G#,1B,,1F#,1G#,1B,1C#,1D#,1B,1E,1D#,1E,2F#,1B,,1B,,1F#,1G#,1B,1E,1D#,1C#,1B,,,,1F#,1B,,1F#,1G#,1B,,1F#,1G#,1B,1B,1C#,1D#,1B,1F#,1G#,1F#,1B,,1B,1A#,1B,1F#,1G#,1B,1E,1D#,1E,2F#,1B,,1A#,,1B,,1F#,1G#,1B,,1F#,1G#,1B,1C#,1D#,1B,1E,1D#,1E,2F#,1B,,1B,,1F#,1G#,1B,1F#,1E,1D#,1C#,1B,,,,1F#,1B,,1F#,1G#,1B,,1F#,1G#,1B,1B,1C#,1D#,1B,1F#,1G#,1F#,1B,,1B,1A#,1B,1F#,1G#,1B,1E,1D#,1E,2F#,1B,,1A#,,1B,,1F#,1G#,1B,,1F#,1G#,1B,1C#,1D#,1B,1E,1D#,1E,2F#,1B,,1B,,1F#,1G#,1B,1F#,1E,1D#,1C#,1B,,,,1F#,1B,,1F#,1G#,1B,,1F#,1G#,1B,1B,1C#,1D#,1B,1F#,1G#,1F#,1B,,1B,1A#,1B,1F#,1G#,1B,1E,1D#,1E,2F#,1B,,1A#,,1B,,1F#,1G#,1B,,1F#,1G#,1B,1C#,1D#,1B,1E,1D#,1E,2F#,1B,,1B,,1F#,1G#,1B,1F#,1E,1D#,1C#,1B,,,,1F#,1B,,1F#,1G#,1B,,1F#,1G#,1B,1B,1C#,1D#,1B,1F#,1G#,1F#,1B,,1B,1A#,1B,1F#,1G#,1B,1E,1D#,1E,2F#,1B,,1A#,,1B,,1F#,1G#,1B,,1F#,1G#,1B,1C#,1D#,1B,1E,1D#,1E,2F#,1B,,1B,,1F#,1G#,1B,1F#,1E,1D#,1C#,1B,,,,1F#,1B,,1F#,1G#,1B,,1F#,1G#,1B,1B,1C#,1D#,1B,1F#,1G#,1F#,1B,,1B,1A#,1B,1F#,1G#,1B,1E,1D#,1E,2F#,1B,,1B,,";
-			final String[] tune = tuneStr.split(",");
-			for (Player player : server.getOnlinePlayers())
+			if (loc.getBlock().getTypeId() == 0)
 			{
-				final Location loc = player.getLocation();
-				loc.add(0, 3, 0);
-				while (loc.getBlockY() < player.getLocation().getBlockY() + 10 && loc.getBlock().getTypeId() != 0)
-				{
-					loc.add(0, 1, 0);
-				}
-				if (loc.getBlock().getTypeId() == 0)
-				{
-					noteBlocks.put(player, loc.getBlock());
-					loc.getBlock().setType(Material.NOTE_BLOCK);
-				}
+				noteBlocks.put(player, loc.getBlock());
+				loc.getBlock().setType(Material.NOTE_BLOCK);
 			}
-			taskid = ess.scheduleSyncRepeatingTask(new Runnable()
-			{
-				int i = 0;
+		}
+		taskid = ess.scheduleSyncRepeatingTask(
+				new Runnable()
+				{
+					int i = 0;
 
-				@Override
-				public void run()
-				{
-					final String note = tune[i];
-					i++;
-					if (i >= tune.length)
+					@Override
+					public void run()
 					{
-						Commandessentials.this.stopTune();
-					}
-					if (note.isEmpty())
-					{
-						return;
-					}
-					Map<Player, Block> noteBlocks = Commandessentials.this.noteBlocks;
-					for (Player onlinePlayer : server.getOnlinePlayers())
-					{
-						final Block block = noteBlocks.get(onlinePlayer);
-						if (block == null || block.getType() != Material.NOTE_BLOCK)
+						final String note = tune[i];
+						i++;
+						if (i >= tune.length)
 						{
-							continue;
+							Commandessentials.this.stopTune();
 						}
-						onlinePlayer.playNote(block.getLocation(), (byte)0, noteMap.get(note));
+						if (note.isEmpty())
+						{
+							return;
+						}
+						Map<Player, Block> noteBlocks = Commandessentials.this.noteBlocks;
+						for (Player onlinePlayer : server.getOnlinePlayers())
+						{
+							final Block block = noteBlocks.get(onlinePlayer);
+							if (block == null || block.getType() != Material.NOTE_BLOCK)
+							{
+								continue;
+							}
+							onlinePlayer.playNote(block.getLocation(), (byte)0, noteMap.get(note));
+						}
 					}
-				}
-			}, 20, 2);
+				}, 20, 2);
 	}
 
 	private void stopTune()
@@ -188,24 +196,40 @@ public class Commandessentials extends EssentialsCommand
 		}
 		noteBlocks.clear();
 	}
-	
+
 	private void run_moo(final Server server, final CommandSender sender, final String command, final String args[])
 	{
-		if(sender instanceof ConsoleCommandSender)
-			sender.sendMessage(new String[]{"         (__)", "         (oo)", "   /------\\/", "  / |    ||", " *  /\\---/\\", "    ~~   ~~", "....\"Have you mooed today?\"..." } );
+		if (sender instanceof ConsoleCommandSender)
+		{
+			sender.sendMessage(
+					new String[]{
+							"         (__)", "         (oo)", "   /------\\/", "  / |    ||", " *  /\\---/\\",
+							"    ~~   ~~", "....\"Have you mooed today?\"..."
+					});
+		}
 		else
-			sender.sendMessage(new String[]{"            (__)", "            (oo)", "   /------\\/", "  /  |      | |", " *  /\\---/\\", "    ~~    ~~", "....\"Have you mooed today?\"..." } );
+		{
+			sender.sendMessage(
+					new String[]{
+							"            (__)", "            (oo)", "   /------\\/", "  /  |      | |", " *  /\\---/\\",
+							"    ~~    ~~", "....\"Have you mooed today?\"..."
+					});
+		}
 	}
-	
+
 	private void run_optout(final Server server, final CommandSender sender, final String command, final String args[])
 	{
 		final Metrics metrics = ess.getMetrics();
 		try
 		{
-			sender.sendMessage("Essentials collects simple metrics to highlight which features to concentrate work on in the future.");
-			if (metrics.isOptOut()) {
-				metrics.enable();		
-			} else {
+			sender.sendMessage(
+					"Essentials collects simple metrics to highlight which features to concentrate work on in the future.");
+			if (metrics.isOptOut())
+			{
+				metrics.enable();
+			}
+			else
+			{
 				metrics.disable();
 			}
 			sender.sendMessage("Anonymous Metrics are now: " + (metrics.isOptOut() ? "disabled" : "enabled"));

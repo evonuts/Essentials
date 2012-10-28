@@ -85,7 +85,8 @@ public class Backup implements Runnable
 							childBuilder.redirectErrorStream(true);
 							childBuilder.directory(ess.getDataFolder().getParentFile().getParentFile());
 							final Process child = childBuilder.start();
-							final BufferedReader reader = new BufferedReader(new InputStreamReader(child.getInputStream()));
+							final BufferedReader reader = new BufferedReader(
+									new InputStreamReader(child.getInputStream()));
 							try
 							{
 								child.waitFor();

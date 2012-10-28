@@ -26,13 +26,11 @@ public class SignEntityListener implements Listener
 		{
 			return;
 		}
-		
+
 		for (Block block : event.blockList())
 		{
-			if (((block.getTypeId() == Material.WALL_SIGN.getId()
-				  || block.getTypeId() == Material.SIGN_POST.getId())
-				 && EssentialsSign.isValidSign(new EssentialsSign.BlockSign(block)))
-				|| EssentialsSign.checkIfBlockBreaksSigns(block))
+			if (((block.getTypeId() == Material.WALL_SIGN.getId() || block.getTypeId() == Material.SIGN_POST.getId()) && EssentialsSign.isValidSign(
+					new EssentialsSign.BlockSign(block))) || EssentialsSign.checkIfBlockBreaksSigns(block))
 			{
 				event.setCancelled(true);
 				return;
@@ -57,18 +55,15 @@ public class SignEntityListener implements Listener
 		}
 
 		final Block block = event.getBlock();
-		if (((block.getTypeId() == Material.WALL_SIGN.getId()
-			  || block.getTypeId() == Material.SIGN_POST.getId())
-			 && EssentialsSign.isValidSign(new EssentialsSign.BlockSign(block)))
-			|| EssentialsSign.checkIfBlockBreaksSigns(block))
+		if (((block.getTypeId() == Material.WALL_SIGN.getId() || block.getTypeId() == Material.SIGN_POST.getId()) && EssentialsSign.isValidSign(
+				new EssentialsSign.BlockSign(block))) || EssentialsSign.checkIfBlockBreaksSigns(block))
 		{
 			event.setCancelled(true);
 			return;
 		}
 		for (EssentialsSign sign : ess.getSettings().enabledSigns())
 		{
-			if (sign.getBlocks().contains(block.getType())
-				&& !sign.onBlockBreak(block, ess))
+			if (sign.getBlocks().contains(block.getType()) && !sign.onBlockBreak(block, ess))
 			{
 				event.setCancelled(true);
 				return;

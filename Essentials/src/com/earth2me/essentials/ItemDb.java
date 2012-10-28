@@ -16,6 +16,7 @@ public class ItemDb implements IConf, IItemDb
 		this.ess = ess;
 		file = new ManagedFile("items.csv", ess);
 	}
+
 	private final transient Map<String, Integer> items = new HashMap<String, Integer>();
 	private final transient Map<ItemData, List<String>> names = new HashMap<ItemData, List<String>>();
 	private final transient Map<String, Short> durabilities = new HashMap<String, Short>();
@@ -139,14 +140,16 @@ public class ItemDb implements IConf, IItemDb
 	{
 		ItemData itemData = new ItemData(item.getTypeId(), item.getDurability());
 		List<String> nameList = names.get(itemData);
-		if (nameList == null) {
-			itemData = new ItemData(item.getTypeId(), (short) 0);
+		if (nameList == null)
+		{
+			itemData = new ItemData(item.getTypeId(), (short)0);
 			nameList = names.get(itemData);
-			if (nameList == null) {
+			if (nameList == null)
+			{
 				return null;
 			}
 		}
-		
+
 		if (nameList.size() > 15)
 		{
 			nameList = nameList.subList(0, 14);
@@ -193,10 +196,10 @@ public class ItemDb implements IConf, IItemDb
 				return false;
 			}
 			ItemData pairo = (ItemData)o;
-			return this.itemNo == pairo.getItemNo()
-				   && this.itemData == pairo.getItemData();
+			return this.itemNo == pairo.getItemNo() && this.itemData == pairo.getItemData();
 		}
 	}
+
 
 	class LengthCompare implements java.util.Comparator<String>
 	{

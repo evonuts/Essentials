@@ -43,7 +43,9 @@ public class Commandlist extends EssentialsCommand
 		String online;
 		if (showhidden && playerHidden > 0)
 		{
-			online = _("listAmountHidden", server.getOnlinePlayers().length - playerHidden, playerHidden, server.getMaxPlayers());
+			online = _(
+					"listAmountHidden", server.getOnlinePlayers().length - playerHidden, playerHidden,
+					server.getMaxPlayers());
 		}
 		else
 		{

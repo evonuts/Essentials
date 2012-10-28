@@ -106,7 +106,8 @@ public class Commandnear extends EssentialsCommand
 					{
 						output.append(", ");
 					}
-					output.append(player.getDisplayName()).append("§f(§4").append((long)Math.sqrt(delta)).append("m§f)");
+					output.append(player.getDisplayName()).append("§f(§4").append((long)Math.sqrt(delta)).append(
+							"m§f)");
 				}
 			}
 		}

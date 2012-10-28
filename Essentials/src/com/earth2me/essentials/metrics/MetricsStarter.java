@@ -26,7 +26,10 @@ public class MetricsStarter implements Runnable
 		EssentialsProtect,
 		EssentialsGeoIP,
 		EssentialsXMPP
-	};
+	}
+
+
+	;
 
 	public MetricsStarter(final IEssentials plugin)
 	{
@@ -45,7 +48,8 @@ public class MetricsStarter implements Runnable
 				}
 				else
 				{
-					ess.getLogger().info("This plugin collects minimal statistic data and sends it to http://metrics.essentials3.net.");
+					ess.getLogger().info(
+							"This plugin collects minimal statistic data and sends it to http://metrics.essentials3.net.");
 					ess.getLogger().info("You can opt out by running /essentials opt-out");
 					ess.getLogger().info("This will start 5 minutes after the first admin/op joins.");
 					start = false;
@@ -77,43 +81,51 @@ public class MetricsStarter implements Runnable
 			}
 
 			final Graph localeGraph = metrics.createGraph("Locale");
-			localeGraph.addPlotter(new SimplePlotter(ess.getI18n().getCurrentLocale().getDisplayLanguage(Locale.ENGLISH)));
+			localeGraph.addPlotter(
+					new SimplePlotter(ess.getI18n().getCurrentLocale().getDisplayLanguage(Locale.ENGLISH)));
 
 			final Graph featureGraph = metrics.createGraph("Features");
-			featureGraph.addPlotter(new Plotter("Unique Accounts")
-			{
-				@Override
-				public int getValue()
-				{
-					return ess.getUserMap().getUniqueUsers();
-				}
-			});
-			featureGraph.addPlotter(new Plotter("Jails")
-			{
-				@Override
-				public int getValue()
-				{
-					return ess.getJails().getCount();
-				}
-			});
-			featureGraph.addPlotter(new Plotter("Kits")
-			{
-				@Override
-				public int getValue()
-				{
-					ConfigurationSection kits =  ess.getSettings().getKits();
-					if (kits == null) { return 0; }
-					return kits.getKeys(false).size();
-				}
-			});
-			featureGraph.addPlotter(new Plotter("Warps")
-			{
-				@Override
-				public int getValue()
-				{
-					return ess.getWarps().getWarpNames().size();
-				}
-			});
+			featureGraph.addPlotter(
+					new Plotter("Unique Accounts")
+					{
+						@Override
+						public int getValue()
+						{
+							return ess.getUserMap().getUniqueUsers();
+						}
+					});
+			featureGraph.addPlotter(
+					new Plotter("Jails")
+					{
+						@Override
+						public int getValue()
+						{
+							return ess.getJails().getCount();
+						}
+					});
+			featureGraph.addPlotter(
+					new Plotter("Kits")
+					{
+						@Override
+						public int getValue()
+						{
+							ConfigurationSection kits = ess.getSettings().getKits();
+							if (kits == null)
+							{
+								return 0;
+							}
+							return kits.getKeys(false).size();
+						}
+					});
+			featureGraph.addPlotter(
+					new Plotter("Warps")
+					{
+						@Override
+						public int getValue()
+						{
+							return ess.getWarps().getWarpNames().size();
+						}
+					});
 
 			final Graph enabledGraph = metrics.createGraph("EnabledFeatures");
 			enabledGraph.addPlotter(new SimplePlotter("Total"));

@@ -76,8 +76,8 @@ public class Jails extends AsyncStorageObjectHolder<com.earth2me.essentials.sett
 		acquireReadLock();
 		try
 		{
-			if (getData().getJails() == null || jailName == null
-				|| !getData().getJails().containsKey(jailName.toLowerCase(Locale.ENGLISH)))
+			if (getData().getJails() == null || jailName == null || !getData().getJails().containsKey(
+					jailName.toLowerCase(Locale.ENGLISH)))
 			{
 				throw new Exception(_("jailNotExist"));
 			}

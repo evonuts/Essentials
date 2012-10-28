@@ -27,29 +27,30 @@ public class UserMap extends CacheLoader<String, User> implements IConf
 
 	private void loadAllUsersAsync(final IEssentials ess)
 	{
-		ess.scheduleAsyncDelayedTask(new Runnable()
-		{
-			@Override
-			public void run()
-			{
-				final File userdir = new File(ess.getDataFolder(), "userdata");
-				if (!userdir.exists())
+		ess.scheduleAsyncDelayedTask(
+				new Runnable()
 				{
-					return;
-				}
-				keys.clear();
-				users.invalidateAll();
-				for (String string : userdir.list())
-				{
-					if (!string.endsWith(".yml"))
+					@Override
+					public void run()
 					{
-						continue;
+						final File userdir = new File(ess.getDataFolder(), "userdata");
+						if (!userdir.exists())
+						{
+							return;
+						}
+						keys.clear();
+						users.invalidateAll();
+						for (String string : userdir.list())
+						{
+							if (!string.endsWith(".yml"))
+							{
+								continue;
+							}
+							final String name = string.substring(0, string.length() - 4);
+							keys.add(Util.sanitizeFileName(name));
+						}
 					}
-					final String name = string.substring(0, string.length() - 4);
-					keys.add(Util.sanitizeFileName(name));
-				}
-			}
-		});
+				});
 	}
 
 	public boolean userExists(final String name)

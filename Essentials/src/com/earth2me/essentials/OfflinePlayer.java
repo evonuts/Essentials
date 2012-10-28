@@ -26,6 +26,7 @@ import org.bukkit.potion.PotionEffectType;
 import org.bukkit.util.Vector;
 import lombok.Delegate;
 
+
 public class OfflinePlayer implements Player
 {
 	private final transient IEssentials ess;
@@ -1051,7 +1052,7 @@ public class OfflinePlayer implements Player
 	{
 		throw new UnsupportedOperationException("Not supported yet.");
 	}
-	
+
 	@Override
 	public int getExpToLevel()
 	{

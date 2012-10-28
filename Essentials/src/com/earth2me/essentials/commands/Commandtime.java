@@ -59,7 +59,8 @@ public class Commandtime extends EssentialsCommand
 				return;
 			}
 		}
-		else {
+		else
+		{
 			setTime = validArgs[0];
 		}
 

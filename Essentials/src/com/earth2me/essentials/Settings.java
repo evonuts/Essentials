@@ -79,6 +79,7 @@ public class Settings implements ISettings
 	{
 		return config.getInt("sethome-multiple." + set, config.getInt("sethome-multiple.default", 3));
 	}
+
 	private int chatRadius = 0;
 
 	private int _getChatRadius()
@@ -121,6 +122,7 @@ public class Settings implements ISettings
 	{
 		return isCommandDisabled(cmd.getName());
 	}
+
 	private Set<String> disabledCommands = new HashSet<String>();
 
 	@Override
@@ -173,6 +175,7 @@ public class Settings implements ISettings
 		}
 		return config.getBoolean("override-" + name.toLowerCase(Locale.ENGLISH), false);
 	}
+
 	private ConfigurationSection commandCosts;
 
 	@Override
@@ -213,6 +216,7 @@ public class Settings implements ISettings
 		}
 		return 0.0;
 	}
+
 	private String nicknamePrefix = "~";
 
 	private String _getNicknamePrefix()
@@ -237,6 +241,7 @@ public class Settings implements ISettings
 	{
 		return config.getDouble("heal-cooldown", 0);
 	}
+
 	private ConfigurationSection kits;
 
 	public ConfigurationSection _getKits()
@@ -277,6 +282,7 @@ public class Settings implements ISettings
 		}
 		return null;
 	}
+
 	private ChatColor operatorColor = null;
 
 	@Override
@@ -350,6 +356,7 @@ public class Settings implements ISettings
 	{
 		return config.getString("backup.command", null);
 	}
+
 	private Map<String, MessageFormat> chatFormats = Collections.synchronizedMap(new HashMap<String, MessageFormat>());
 
 	@Override
@@ -358,8 +365,9 @@ public class Settings implements ISettings
 		MessageFormat mFormat = chatFormats.get(group);
 		if (mFormat == null)
 		{
-			String format = config.getString("chat.group-formats." + (group == null ? "Default" : group),
-											 config.getString("chat.format", "&7[{GROUP}]&f {DISPLAYNAME}&7:&f {MESSAGE}"));
+			String format = config.getString(
+					"chat.group-formats." + (group == null ? "Default" : group),
+					config.getString("chat.format", "&7[{GROUP}]&f {DISPLAYNAME}&7:&f {MESSAGE}"));
 			format = Util.replaceFormat(format);
 			format = format.replace("{DISPLAYNAME}", "%1$s");
 			format = format.replace("{GROUP}", "{0}");
@@ -383,7 +391,9 @@ public class Settings implements ISettings
 	@Override
 	public IText getAnnounceNewPlayerFormat()
 	{
-		return new SimpleTextInput(Util.replaceFormat(config.getString("newbies.announce-format", "&dWelcome {DISPLAYNAME} to the server!")));
+		return new SimpleTextInput(
+				Util.replaceFormat(
+						config.getString("newbies.announce-format", "&dWelcome {DISPLAYNAME} to the server!")));
 	}
 
 	@Override
@@ -441,6 +451,7 @@ public class Settings implements ISettings
 		warnOnBuildDisallow = _warnOnBuildDisallow();
 		mailsPerMinute = _getMailsPerMinute();
 	}
+
 	private List<Integer> itemSpawnBl = new ArrayList<Integer>();
 
 	@Override
@@ -476,6 +487,7 @@ public class Settings implements ISettings
 		}
 		return epItemSpwn;
 	}
+
 	private List<EssentialsSign> enabledSigns = new ArrayList<EssentialsSign>();
 	private boolean signsEnabled = false;
 
@@ -514,6 +526,7 @@ public class Settings implements ISettings
 		}
 		return newSigns;
 	}
+
 	private boolean warnOnBuildDisallow;
 
 	private boolean _warnOnBuildDisallow()
@@ -526,6 +539,7 @@ public class Settings implements ISettings
 	{
 		return warnOnBuildDisallow;
 	}
+
 	private boolean debug = false;
 	private boolean configDebug = false;
 
@@ -618,6 +632,7 @@ public class Settings implements ISettings
 	{
 		return config.getBoolean(configName, def);
 	}
+
 	private final static double MAXMONEY = 10000000000000.0;
 
 	@Override
@@ -630,6 +645,7 @@ public class Settings implements ISettings
 		}
 		return max;
 	}
+
 	private final static double MINMONEY = -10000000000000.0;
 
 	@Override
@@ -664,6 +680,7 @@ public class Settings implements ISettings
 	{
 		return config.getBoolean("remove-god-on-disconnect", false);
 	}
+
 	private boolean changeDisplayName = true;
 
 	private boolean _changeDisplayName()
@@ -676,6 +693,7 @@ public class Settings implements ISettings
 	{
 		return changeDisplayName;
 	}
+
 	private boolean changePlayerListName = false;
 
 	private boolean _changePlayerListName()
@@ -694,6 +712,7 @@ public class Settings implements ISettings
 	{
 		return config.getBoolean("use-bukkit-permissions", false);
 	}
+
 	private boolean prefixsuffixconfigured = false;
 	private boolean addprefixsuffix = false;
 	private boolean essentialsChatActive = false;
@@ -719,6 +738,7 @@ public class Settings implements ISettings
 	{
 		return prefixsuffixconfigured ? addprefixsuffix : essentialsChatActive;
 	}
+
 	private boolean disablePrefix = false;
 
 	private boolean _disablePrefix()
@@ -731,6 +751,7 @@ public class Settings implements ISettings
 	{
 		return disablePrefix;
 	}
+
 	private boolean disableSuffix = false;
 
 	private boolean _disableSuffix()
@@ -755,6 +776,7 @@ public class Settings implements ISettings
 	{
 		return config.getLong("auto-afk-kick", -1);
 	}
+
 	private boolean getFreezeAfkPlayers;
 
 	@Override
@@ -767,6 +789,7 @@ public class Settings implements ISettings
 	{
 		return config.getBoolean("freeze-afk-players", false);
 	}
+
 	private boolean cancelAfkOnMove;
 
 	@Override
@@ -785,6 +808,7 @@ public class Settings implements ISettings
 	{
 		return config.getBoolean("death-messages", true);
 	}
+
 	private Set<String> noGodWorlds = new HashSet<String>();
 
 	@Override
@@ -816,6 +840,7 @@ public class Settings implements ISettings
 	{
 		return config.getBoolean("world-home-permissions", false);
 	}
+
 	private boolean registerBackInListener;
 
 	@Override
@@ -828,6 +853,7 @@ public class Settings implements ISettings
 	{
 		return config.getBoolean("register-back-in-listener", false);
 	}
+
 	private boolean disableItemPickupWhileAfk;
 
 	@Override
@@ -885,6 +911,7 @@ public class Settings implements ISettings
 	{
 		this.metricsEnabled = metricsEnabled;
 	}
+
 	private boolean teleportInvulnerability;
 
 	@Override
@@ -903,6 +930,7 @@ public class Settings implements ISettings
 	{
 		return teleportInvulnerability;
 	}
+
 	private long loginAttackDelay;
 
 	private long _getLoginAttackDelay()
@@ -915,6 +943,7 @@ public class Settings implements ISettings
 	{
 		return loginAttackDelay;
 	}
+
 	private int signUsePerSecond;
 
 	private int _getSignUsePerSecond()
@@ -944,12 +973,14 @@ public class Settings implements ISettings
 		double maxSpeed = config.getDouble("max-walk-speed", 0.8);
 		return maxSpeed > 1.0 ? 1.0 : Math.abs(maxSpeed);
 	}
-	
+
 	private int mailsPerMinute;
 
-	private int _getMailsPerMinute() {
+	private int _getMailsPerMinute()
+	{
 		return config.getInt("mails-per-minute", 1000);
 	}
+
 	@Override
 	public int getMailsPerMinute()
 	{

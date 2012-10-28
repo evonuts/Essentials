@@ -23,11 +23,11 @@ public class SignRepair extends EssentialsSign
 		{
 			sign.setLine(1, "Hand");
 		}
-		else if (!repairTarget.equalsIgnoreCase("all") && !repairTarget.equalsIgnoreCase("hand") )
+		else if (!repairTarget.equalsIgnoreCase("all") && !repairTarget.equalsIgnoreCase("hand"))
 		{
 			sign.setLine(1, "§c<hand|all>");
 			throw new SignException(_("invalidSignLine", 2));
-		}		
+		}
 		validateTrade(sign, 2, ess);
 		return true;
 	}
@@ -37,12 +37,11 @@ public class SignRepair extends EssentialsSign
 	{
 		final Trade charge = getTrade(sign, 2, ess);
 		charge.isAffordableFor(player);
-		
+
 		Commandrepair command = new Commandrepair();
 		command.setEssentials(ess);
-		String[] args = new String[]
-		{
-			sign.getLine(1)
+		String[] args = new String[]{
+				sign.getLine(1)
 		};
 		try
 		{
@@ -52,7 +51,7 @@ public class SignRepair extends EssentialsSign
 		{
 			throw new SignException(ex.getMessage(), ex);
 		}
-		charge.charge(player);					
+		charge.charge(player);
 		return true;
 	}
 }

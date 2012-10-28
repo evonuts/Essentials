@@ -8,7 +8,7 @@ import java.util.*;
 /**
  * This utility class is used for converting between the ingame time in ticks to ingame time as a friendly string. Note
  * that the time is INGAME.
- *
+ * <p/>
  * http://www.minecraftwiki.net/wiki/Day/night_cycle
  *
  * @author Olof Larsson

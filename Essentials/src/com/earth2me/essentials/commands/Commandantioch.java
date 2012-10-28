@@ -6,6 +6,7 @@ import org.bukkit.entity.TNTPrimed;
 import com.earth2me.essentials.User;
 import com.earth2me.essentials.Util;
 
+
 // This command has a in theme message that only shows if you supply a parameter #EasterEgg
 public class Commandantioch extends EssentialsCommand
 {
@@ -21,7 +22,7 @@ public class Commandantioch extends EssentialsCommand
 		{
 			ess.broadcastMessage(user, "...lobbest thou thy Holy Hand Grenade of Antioch towards thy foe,");
 			ess.broadcastMessage(user, "who being naughty in My sight, shall snuff it.");
-		}		
+		}
 
 		final Location loc = Util.getTarget(user);
 		loc.getWorld().spawn(loc, TNTPrimed.class);

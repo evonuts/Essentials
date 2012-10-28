@@ -71,7 +71,8 @@ public class Commandfly extends EssentialsCommand
 			{
 				player.setFlying(false);
 			}
-			sender.sendMessage(_("flyMode", _(player.getAllowFlight() ? "enabled" : "disabled"), player.getDisplayName()));
+			sender.sendMessage(
+					_("flyMode", _(player.getAllowFlight() ? "enabled" : "disabled"), player.getDisplayName()));
 		}
 	}
 }

@@ -50,7 +50,7 @@ public class Commandtree extends EssentialsCommand
 		else if (args[0].equalsIgnoreCase("junglebush"))
 		{
 			tree = TreeType.JUNGLE_BUSH;
-					}
+		}
 		else if (args[0].equalsIgnoreCase("swamp"))
 		{
 			tree = TreeType.SWAMP;

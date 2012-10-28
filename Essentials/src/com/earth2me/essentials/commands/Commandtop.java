@@ -20,7 +20,7 @@ public class Commandtop extends EssentialsCommand
 	{
 		final int topX = user.getLocation().getBlockX();
 		final int topZ = user.getLocation().getBlockZ();
-		final Location location = new Location(user.getWorld(), topX, user.getWorld().getMaxHeight(), topZ);		
+		final Location location = new Location(user.getWorld(), topX, user.getWorld().getMaxHeight(), topZ);
 		user.getTeleport().teleport(location, new Trade(this.getName(), ess), TeleportCause.COMMAND);
 		user.sendMessage(_("teleportTop"));
 	}

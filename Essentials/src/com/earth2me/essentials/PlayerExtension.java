@@ -13,11 +13,9 @@ import lombok.Delegate;
 
 public class PlayerExtension implements Player
 {
-	@Delegate(types =
-	{
-		Player.class, Entity.class, CommandSender.class, ServerOperator.class,
-		HumanEntity.class, ConfigurationSerializable.class, LivingEntity.class,
-		Permissible.class
+	@Delegate(types = {
+			Player.class, Entity.class, CommandSender.class, ServerOperator.class, HumanEntity.class,
+			ConfigurationSerializable.class, LivingEntity.class, Permissible.class
 	})
 	protected Player base;
 

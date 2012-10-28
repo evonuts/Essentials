@@ -20,9 +20,11 @@ public class Util
 	private Util()
 	{
 	}
+
 	private final static Logger logger = Logger.getLogger("Minecraft");
 	private final static Pattern INVALIDFILECHARS = Pattern.compile("[^a-z0-9]");
-	private final static Pattern INVALIDCHARS = Pattern.compile("[^\t\n\r\u0020-\u007E\u0085\u00A0-\uD7FF\uE000-\uFFFC]");
+	private final static Pattern INVALIDCHARS = Pattern.compile(
+			"[^\t\n\r\u0020-\u007E\u0085\u00A0-\uD7FF\uE000-\uFFFC]");
 
 	//Used to clean file names before saving to disk
 	public static String sanitizeFileName(final String name)
@@ -63,29 +65,13 @@ public class Util
 		}
 
 		StringBuilder sb = new StringBuilder();
-		int[] types = new int[]
-		{
-			Calendar.YEAR,
-			Calendar.MONTH,
-			Calendar.DAY_OF_MONTH,
-			Calendar.HOUR_OF_DAY,
-			Calendar.MINUTE,
-			Calendar.SECOND
+		int[] types = new int[]{
+				Calendar.YEAR, Calendar.MONTH, Calendar.DAY_OF_MONTH, Calendar.HOUR_OF_DAY, Calendar.MINUTE,
+				Calendar.SECOND
 		};
-		String[] names = new String[]
-		{
-			_("year"),
-			_("years"),
-			_("month"),
-			_("months"),
-			_("day"),
-			_("days"),
-			_("hour"),
-			_("hours"),
-			_("minute"),
-			_("minutes"),
-			_("second"),
-			_("seconds")
+		String[] names = new String[]{
+				_("year"), _("years"), _("month"), _("months"), _("day"), _("days"), _("hour"), _("hours"), _("minute"),
+				_("minutes"), _("second"), _("seconds")
 		};
 		int accuracy = 0;
 		for (int i = 0; i < types.length; i++)
@@ -126,13 +112,8 @@ public class Util
 	public static long parseDateDiff(String time, boolean future) throws Exception
 	{
 		Pattern timePattern = Pattern.compile(
-				"(?:([0-9]+)\\s*y[a-z]*[,\\s]*)?"
-				+ "(?:([0-9]+)\\s*mo[a-z]*[,\\s]*)?"
-				+ "(?:([0-9]+)\\s*w[a-z]*[,\\s]*)?"
-				+ "(?:([0-9]+)\\s*d[a-z]*[,\\s]*)?"
-				+ "(?:([0-9]+)\\s*h[a-z]*[,\\s]*)?"
-				+ "(?:([0-9]+)\\s*m[a-z]*[,\\s]*)?"
-				+ "(?:([0-9]+)\\s*(?:s[a-z]*)?)?", Pattern.CASE_INSENSITIVE);
+				"(?:([0-9]+)\\s*y[a-z]*[,\\s]*)?" + "(?:([0-9]+)\\s*mo[a-z]*[,\\s]*)?" + "(?:([0-9]+)\\s*w[a-z]*[,\\s]*)?" + "(?:([0-9]+)\\s*d[a-z]*[,\\s]*)?" + "(?:([0-9]+)\\s*h[a-z]*[,\\s]*)?" + "(?:([0-9]+)\\s*m[a-z]*[,\\s]*)?" + "(?:([0-9]+)\\s*(?:s[a-z]*)?)?",
+				Pattern.CASE_INSENSITIVE);
 		Matcher m = timePattern.matcher(time);
 		int years = 0;
 		int months = 0;
@@ -231,7 +212,8 @@ public class Util
 		}
 		return c.getTimeInMillis();
 	}
-	// The player can stand inside these materials 
+
+	// The player can stand inside these materials
 	private static final Set<Integer> AIR_MATERIALS = new HashSet<Integer>();
 	private static final HashSet<Byte> AIR_MATERIALS_TARGET = new HashSet<Byte>();
 
@@ -292,6 +274,7 @@ public class Util
 		}
 		return block.getLocation();
 	}
+
 	public final static int RADIUS = 3;
 	public final static Vector3D[] VOLUME;
 
@@ -304,10 +287,12 @@ public class Util
 			this.y = y;
 			this.z = z;
 		}
+
 		public int x;
 		public int y;
 		public int z;
 	}
+
 
 	static
 	{
@@ -322,7 +307,8 @@ public class Util
 				}
 			}
 		}
-		Collections.sort(pos, new Comparator<Vector3D>()
+		Collections.sort(
+				pos, new Comparator<Vector3D>()
 		{
 			@Override
 			public int compare(Vector3D a, Vector3D b)
@@ -431,8 +417,8 @@ public class Util
 			return true;
 		}
 
-		if ((!AIR_MATERIALS.contains(world.getBlockAt(x, y, z).getType().getId()))
-			|| (!AIR_MATERIALS.contains(world.getBlockAt(x, y + 1, z).getType().getId())))
+		if ((!AIR_MATERIALS.contains(world.getBlockAt(x, y, z).getType().getId())) || (!AIR_MATERIALS.contains(
+				world.getBlockAt(x, y + 1, z).getType().getId())))
 		{
 			return true;
 		}
@@ -520,6 +506,7 @@ public class Util
 		}
 		return is;
 	}
+
 	private static DecimalFormat dFormat = new DecimalFormat("#0.00", DecimalFormatSymbols.getInstance(Locale.US));
 
 	public static String formatAsCurrency(final double value)
@@ -603,7 +590,9 @@ public class Util
 		}
 		return input.substring(pos, pos + 2);
 	}
-	private static transient final Pattern URL_PATTERN = Pattern.compile("((?:(?:https?)://)?[\\w-_\\.]{2,})\\.([a-z]{2,3}(?:/\\S+)?)");
+
+	private static transient final Pattern URL_PATTERN = Pattern.compile(
+			"((?:(?:https?)://)?[\\w-_\\.]{2,})\\.([a-z]{2,3}(?:/\\S+)?)");
 	private static transient final Pattern VANILLA_PATTERN = Pattern.compile("\u00A7+[0-9A-FK-ORa-fk-or]");
 	private static transient final Pattern REPLACE_PATTERN = Pattern.compile("&([0-9a-fk-or])");
 	private static transient final Pattern VANILLA_COLOR_PATTERN = Pattern.compile("\u00A7+[0-9A-Fa-f]");

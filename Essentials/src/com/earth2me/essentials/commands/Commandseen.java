@@ -24,7 +24,9 @@ public class Commandseen extends EssentialsCommand
 	@Override
 	protected void run(final Server server, final User user, final String commandLabel, final String[] args) throws Exception
 	{
-		seen(server, user, args, user.isAuthorized("essentials.seen.banreason"), user.isAuthorized("essentials.seen.extra"));
+		seen(
+				server, user, args, user.isAuthorized("essentials.seen.banreason"),
+				user.isAuthorized("essentials.seen.extra"));
 	}
 
 	protected void seen(final Server server, final CommandSender sender, final String[] args, final boolean showBan, final boolean extra) throws Exception
@@ -60,8 +62,12 @@ public class Commandseen extends EssentialsCommand
 			{
 				sender.sendMessage(_("whoisIPAddress", player.getLastLoginAddress()));
 				final Location loc = player.getLastLocation();
-				if (loc != null) {
-					sender.sendMessage(_("whoisLocation", loc.getWorld().getName(), loc.getBlockX(), loc.getBlockY(), loc.getBlockZ()));
+				if (loc != null)
+				{
+					sender.sendMessage(
+							_(
+									"whoisLocation", loc.getWorld().getName(), loc.getBlockX(), loc.getBlockY(),
+									loc.getBlockZ()));
 				}
 			}
 		}

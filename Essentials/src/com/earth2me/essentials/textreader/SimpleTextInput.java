@@ -6,11 +6,12 @@ import java.util.*;
 public class SimpleTextInput implements IText
 {
 	private final transient List<String> lines = new ArrayList<String>();
-	
-	public SimpleTextInput (final String input) {
+
+	public SimpleTextInput(final String input)
+	{
 		lines.addAll(Arrays.asList(input.split("\\n")));
 	}
-		
+
 	@Override
 	public List<String> getLines()
 	{
@@ -28,5 +29,5 @@ public class SimpleTextInput implements IText
 	{
 		return Collections.emptyMap();
 	}
-	
+
 }

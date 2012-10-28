@@ -34,12 +34,12 @@ public class VaultEco implements Method
 	{
 		return this.vault.getDescription().getName();
 	}
-	
+
 	public String getEconomy()
 	{
 		return economy == null ? "NoEco" : economy.getName();
 	}
-	
+
 	@Override
 	public String getLongName()
 	{
@@ -85,8 +85,8 @@ public class VaultEco implements Method
 	@Override
 	public boolean hasBankAccount(String bank, String name)
 	{
-		return this.economy.isBankOwner(bank, name).transactionSuccess()
-			   || this.economy.isBankMember(bank, name).transactionSuccess();
+		return this.economy.isBankOwner(bank, name).transactionSuccess() || this.economy.isBankMember(
+				bank, name).transactionSuccess();
 	}
 
 	@Override
@@ -131,8 +131,10 @@ public class VaultEco implements Method
 	{
 		try
 		{
-			RegisteredServiceProvider<Economy> ecoPlugin = plugin.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
-			return plugin instanceof Vault && ecoPlugin != null && !ecoPlugin.getProvider().getName().equals("Essentials Economy");
+			RegisteredServiceProvider<Economy> ecoPlugin = plugin.getServer().getServicesManager().getRegistration(
+					net.milkbowl.vault.economy.Economy.class);
+			return plugin instanceof Vault && ecoPlugin != null && !ecoPlugin.getProvider().getName().equals(
+					"Essentials Economy");
 		}
 		catch (LinkageError e)
 		{
@@ -148,7 +150,8 @@ public class VaultEco implements Method
 	public void setPlugin(Plugin plugin)
 	{
 		this.vault = (Vault)plugin;
-		RegisteredServiceProvider<Economy> economyProvider = this.vault.getServer().getServicesManager().getRegistration(net.milkbowl.vault.economy.Economy.class);
+		RegisteredServiceProvider<Economy> economyProvider = this.vault.getServer().getServicesManager().getRegistration(
+				net.milkbowl.vault.economy.Economy.class);
 		if (economyProvider != null)
 		{
 			this.economy = economyProvider.getProvider();

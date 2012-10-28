@@ -11,7 +11,7 @@ public class BPermissions2Handler extends SuperpermsHandler
 {
 	public BPermissions2Handler()
 	{
-		
+
 	}
 
 	@Override
@@ -29,7 +29,7 @@ public class BPermissions2Handler extends SuperpermsHandler
 	public List<String> getGroups(final Player base)
 	{
 		final String[] groups = ApiLayer.getGroups(base.getWorld().getName(), CalculableType.USER, base.getName());
-		return Arrays.asList(groups);		
+		return Arrays.asList(groups);
 	}
 
 	@Override
@@ -53,7 +53,7 @@ public class BPermissions2Handler extends SuperpermsHandler
 	@Override
 	public String getSuffix(final Player base)
 	{
-		return ApiLayer.getValue(base.getWorld().getName(), CalculableType.USER, base.getName(), "suffix");		
+		return ApiLayer.getValue(base.getWorld().getName(), CalculableType.USER, base.getName(), "suffix");
 	}
 
 }

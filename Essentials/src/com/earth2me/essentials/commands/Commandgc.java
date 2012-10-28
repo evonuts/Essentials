@@ -33,12 +33,12 @@ public class Commandgc extends EssentialsCommand
 		{
 			color = ChatColor.RED;
 		}
-		
+
 		sender.sendMessage(_("uptime", Util.formatDateDiff(ManagementFactory.getRuntimeMXBean().getStartTime())));
 		sender.sendMessage(_("tps", "" + color + tps));
 		sender.sendMessage(_("gcmax", (Runtime.getRuntime().maxMemory() / 1024 / 1024)));
 		sender.sendMessage(_("gctotal", (Runtime.getRuntime().totalMemory() / 1024 / 1024)));
-		sender.sendMessage(_("gcfree", (Runtime.getRuntime().freeMemory() / 1024 / 1024)));		
+		sender.sendMessage(_("gcfree", (Runtime.getRuntime().freeMemory() / 1024 / 1024)));
 
 		for (World w : server.getWorlds())
 		{
@@ -53,8 +53,9 @@ public class Commandgc extends EssentialsCommand
 				break;
 			}
 
-			sender.sendMessage(_("gcWorld", worldType, w.getName(), w.getLoadedChunks().length, w.getEntities().size()));
+			sender.sendMessage(
+					_("gcWorld", worldType, w.getName(), w.getLoadedChunks().length, w.getEntities().size()));
 		}
-		
+
 	}
 }

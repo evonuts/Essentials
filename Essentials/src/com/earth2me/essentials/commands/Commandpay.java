@@ -21,7 +21,7 @@ public class Commandpay extends EssentialsCommand
 		{
 			throw new NotEnoughArgumentsException();
 		}
-		
+
 		//TODO: TL this
 		if (args[0].trim().length() < 2)
 		{
@@ -39,7 +39,9 @@ public class Commandpay extends EssentialsCommand
 				continue;
 			}
 			user.payUser(u, amount);
-			Trade.log("Command", "Pay", "Player", user.getName(), new Trade(amount, ess), u.getName(), new Trade(amount, ess), user.getLocation(), ess);
+			Trade.log(
+					"Command", "Pay", "Player", user.getName(), new Trade(amount, ess), u.getName(),
+					new Trade(amount, ess), user.getLocation(), ess);
 			foundUser = true;
 		}
 

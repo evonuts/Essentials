@@ -31,13 +31,11 @@ public class Commandgive extends EssentialsCommand
 		final ItemStack stack = ess.getItemDb().get(args[1]);
 
 		final String itemname = stack.getType().toString().toLowerCase(Locale.ENGLISH).replace("_", "");
-		if (sender instanceof Player
-			&& (ess.getSettings().permissionBasedItemSpawn()
-				? (!ess.getUser(sender).isAuthorized("essentials.give.item-all")
-				   && !ess.getUser(sender).isAuthorized("essentials.give.item-" + itemname)
-				   && !ess.getUser(sender).isAuthorized("essentials.give.item-" + stack.getTypeId()))
-				: (!ess.getUser(sender).isAuthorized("essentials.itemspawn.exempt")
-				   && !ess.getUser(sender).canSpawnItem(stack.getTypeId()))))
+		if (sender instanceof Player && (ess.getSettings().permissionBasedItemSpawn() ? (!ess.getUser(
+				sender).isAuthorized("essentials.give.item-all") && !ess.getUser(sender).isAuthorized(
+				"essentials.give.item-" + itemname) && !ess.getUser(sender).isAuthorized(
+				"essentials.give.item-" + stack.getTypeId())) : (!ess.getUser(sender).isAuthorized(
+				"essentials.itemspawn.exempt") && !ess.getUser(sender).canSpawnItem(stack.getTypeId()))))
 		{
 			throw new Exception(_("cantSpawnItem", itemname));
 		}
@@ -71,7 +69,9 @@ public class Commandgive extends EssentialsCommand
 				{
 					continue;
 				}
-				final Enchantment enchantment = Commandenchant.getEnchantment(split[0], sender instanceof Player ? ess.getUser(sender) : null);
+				final Enchantment enchantment = Commandenchant.getEnchantment(
+						split[0], sender instanceof Player ? ess.getUser(
+						sender) : null);
 				int level;
 				if (split.length > 1)
 				{

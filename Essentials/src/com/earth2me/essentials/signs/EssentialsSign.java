@@ -28,8 +28,9 @@ public class EssentialsSign
 	{
 		final ISign sign = new EventSign(event);
 		final User user = ess.getUser(event.getPlayer());
-		if (!(user.isAuthorized("essentials.signs." + signName.toLowerCase(Locale.ENGLISH) + ".create")
-			  || user.isAuthorized("essentials.signs.create." + signName.toLowerCase(Locale.ENGLISH))))
+		if (!(user.isAuthorized(
+				"essentials.signs." + signName.toLowerCase(Locale.ENGLISH) + ".create") || user.isAuthorized(
+				"essentials.signs.create." + signName.toLowerCase(Locale.ENGLISH))))
 		{
 			// Return true, so other plugins can use the same sign title, just hope
 			// they won't change it to §1[Signname]
@@ -82,9 +83,11 @@ public class EssentialsSign
 		}
 		try
 		{
-			return (user.isAuthorized("essentials.signs." + signName.toLowerCase(Locale.ENGLISH) + ".use")
-					|| user.isAuthorized("essentials.signs.use." + signName.toLowerCase(Locale.ENGLISH)))
-				   && onSignInteract(sign, user, getUsername(user), ess);
+			return (user.isAuthorized(
+					"essentials.signs." + signName.toLowerCase(Locale.ENGLISH) + ".use") || user.isAuthorized(
+					"essentials.signs.use." + signName.toLowerCase(Locale.ENGLISH))) && onSignInteract(
+					sign, user, getUsername(
+					user), ess);
 		}
 		catch (ChargeException ex)
 		{
@@ -104,9 +107,10 @@ public class EssentialsSign
 		final User user = ess.getUser(player);
 		try
 		{
-			return (user.isAuthorized("essentials.signs." + signName.toLowerCase(Locale.ENGLISH) + ".break")
-					|| user.isAuthorized("essentials.signs.break." + signName.toLowerCase(Locale.ENGLISH)))
-				   && onSignBreak(sign, user, getUsername(user), ess);
+			return (user.isAuthorized(
+					"essentials.signs." + signName.toLowerCase(Locale.ENGLISH) + ".break") || user.isAuthorized(
+					"essentials.signs.break." + signName.toLowerCase(Locale.ENGLISH))) && onSignBreak(
+					sign, user, getUsername(user), ess);
 		}
 		catch (SignException ex)
 		{
@@ -212,12 +216,8 @@ public class EssentialsSign
 		{
 			return true;
 		}
-		final BlockFace[] directions = new BlockFace[]
-		{
-			BlockFace.NORTH,
-			BlockFace.EAST,
-			BlockFace.SOUTH,
-			BlockFace.WEST
+		final BlockFace[] directions = new BlockFace[]{
+				BlockFace.NORTH, BlockFace.EAST, BlockFace.SOUTH, BlockFace.WEST
 		};
 		for (BlockFace blockFace : directions)
 		{
@@ -274,8 +274,7 @@ public class EssentialsSign
 		}
 	}
 
-	protected final void validateTrade(final ISign sign, final int amountIndex, final int itemIndex,
-									   final User player, final IEssentials ess) throws SignException
+	protected final void validateTrade(final ISign sign, final int amountIndex, final int itemIndex, final User player, final IEssentials ess) throws SignException
 	{
 		if (sign.getLine(itemIndex).equalsIgnoreCase("exp") || sign.getLine(itemIndex).equalsIgnoreCase("xp"))
 		{
@@ -290,8 +289,7 @@ public class EssentialsSign
 		sign.setLine(itemIndex, sign.getLine(itemIndex).trim());
 	}
 
-	protected final Trade getTrade(final ISign sign, final int amountIndex, final int itemIndex,
-								   final User player, final IEssentials ess) throws SignException
+	protected final Trade getTrade(final ISign sign, final int amountIndex, final int itemIndex, final User player, final IEssentials ess) throws SignException
 	{
 		if (sign.getLine(itemIndex).equalsIgnoreCase("exp") || sign.getLine(itemIndex).equalsIgnoreCase("xp"))
 		{
@@ -299,7 +297,9 @@ public class EssentialsSign
 			return new Trade(amount, ess);
 		}
 		final ItemStack item = getItemStack(sign.getLine(itemIndex), 1, ess);
-		final int amount = Math.min(getIntegerPositive(sign.getLine(amountIndex)), item.getType().getMaxStackSize() * player.getInventory().getSize());
+		final int amount = Math.min(
+				getIntegerPositive(sign.getLine(amountIndex)),
+				item.getType().getMaxStackSize() * player.getInventory().getSize());
 		if (item.getTypeId() == 0 || amount < 1)
 		{
 			throw new SignException(_("moreThanZero"));
@@ -457,7 +457,7 @@ public class EssentialsSign
 		public final void setLine(final int index, final String text)
 		{
 			event.setLine(index, text);
-			sign.setLine(index, text);			
+			sign.setLine(index, text);
 			updateSign();
 		}
 

@@ -33,15 +33,16 @@ public class Commandrepair extends EssentialsCommand
 				throw new Exception(_("repairInvalidType"));
 			}
 
-			if (!item.getEnchantments().isEmpty()
-				&& !ess.getSettings().getRepairEnchanted()
-				&& !user.isAuthorized("essentials.repair.enchanted"))
+			if (!item.getEnchantments().isEmpty() && !ess.getSettings().getRepairEnchanted() && !user.isAuthorized(
+					"essentials.repair.enchanted"))
 			{
 				throw new Exception(_("repairEnchanted"));
 			}
 
 			final String itemName = item.getType().toString().toLowerCase(Locale.ENGLISH);
-			final Trade charge = new Trade("repair-" + itemName.replace('_', '-'), new Trade("repair-" + item.getTypeId(), new Trade("repair-item", ess), ess), ess);
+			final Trade charge = new Trade(
+					"repair-" + itemName.replace('_', '-'),
+					new Trade("repair-" + item.getTypeId(), new Trade("repair-item", ess), ess), ess);
 
 			charge.isAffordableFor(user);
 
@@ -105,7 +106,9 @@ public class Commandrepair extends EssentialsCommand
 				continue;
 			}
 			final String itemName = item.getType().toString().toLowerCase(Locale.ENGLISH);
-			final Trade charge = new Trade("repair-" + itemName.replace('_', '-'), new Trade("repair-" + item.getTypeId(), new Trade("repair-item", ess), ess), ess);
+			final Trade charge = new Trade(
+					"repair-" + itemName.replace('_', '-'),
+					new Trade("repair-" + item.getTypeId(), new Trade("repair-item", ess), ess), ess);
 			try
 			{
 				charge.isAffordableFor(user);
@@ -115,9 +118,8 @@ public class Commandrepair extends EssentialsCommand
 				user.sendMessage(ex.getMessage());
 				continue;
 			}
-			if (!item.getEnchantments().isEmpty()
-				&& !ess.getSettings().getRepairEnchanted()
-				&& !user.isAuthorized("essentials.repair.enchanted"))
+			if (!item.getEnchantments().isEmpty() && !ess.getSettings().getRepairEnchanted() && !user.isAuthorized(
+					"essentials.repair.enchanted"))
 			{
 				continue;
 			}
